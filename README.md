@@ -36,48 +36,80 @@ navbar that stays there throughout browsing
 
 
 
-database reqs:
-
-
-Users:  properties:
-
-				login name, password, admin(boolean), email, assoc. to Orders table, social media connections, favorites (has many stickers)
-
-
-Stickers: properties: name, price, coordinated wish, category
-
-
-Reviews:  association(s) to stickers and users
-
-Orders:  shopping bag, assoc. with ONE user, many stickers;
-			if guest order:  need a unique email
+STORY   LIST:  
 
 
 
+database:
+
+
+Write database models:  
+			
+		STORY: write models: 
+
+			Users:  properties:
+					primary key (userId),
+					login name, password, unique email, isAdmin(boolean),
+
+			Stickers: primary key (wishStickerId), name, price, associated wish, category, picture 
+
+			Reviews:  primary key, text (validation: 5 chars min), stars? out of 5, association(s) to stickers 			and users
+
+			Orders:  primary key, item(s) (include price, quantity), total order cost, date created, userID or 			guest Session ID, email (recipient), email (purchaser) complete (boolean)
 
 
 
 
-Admin functionality:  admins must be logged in as admin in order to access a /admin view which will allow order/item/database 
-	manipulation 
+		GROUP PARTY STORY:  WRITE model associations (and methods)
 
- .post (items), .delete (anything) --> admin only routes
+					Order: belongsTo User  (or guest session ID)
+							hasMany items
+
+					Users:  hasMany orders, hasMany Reviews, hasMany items as favorites
+								method? (based on COMPLETED orders, find history -- type and # of stickers ordered)
 
 
-regular user routes: 
+					* maybe later? *  social media connections -- purchased OR desired stickers 
 
-.get (stickers), .get by id, findall by category, .get (one user), .post (their own user acc't), .put (their own user account)
 
-.post (to orders)
+
+Write back-end routes:  
+
+
+
+
+		Admin functionality:  admins must be logged in as admin in order to access a /admin view which will allow order/item/database 
+			manipulation 
+
+		 .post (items), .delete (anything) --> admin only routes
+
+
+		regular user routes: 
+
+		.get (stickers), .get by id, findall by category, .get (one user), .post (their own user acc't), .put (their own user account)
+
+		.post (to orders)
+
 
 
 
 
 front-end components:
 
+	
+
 	navbar:  contact (email form), login, home, browse stickers, * admin-only menu, cart/bag
 
+		STORY:  pick bootstrap layout, make navbar, include buttons but just as placeholders
+
+
 	store display:  by category, all items,  options: sort by price, options: most purchased, options: sort by review rating
+
+		inventory of stickers & wishes
+
+		  indicates prices
+
+		  order form
 
 		display wishlist:  sticker onclick noise, can post stickers they like to social media and a friend could order for them
 
