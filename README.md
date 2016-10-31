@@ -1,5 +1,5 @@
+
 # StickYoSelf
-<<<<<<< HEAD
 
 
  grace shopper project:
@@ -128,9 +128,3 @@ front-end components:
 		see items, change quantity or delete, link to item page
 
 		submit order form, option to send as gift  --> ON SUBMIT:  confirmation, (send email w sticker?) (option to post to social media) 
-
-
-
-=======
-# StickYoSelf
->>>>>>> c0627e25d8805cfe0542e3cc5d25c115888b8db9
