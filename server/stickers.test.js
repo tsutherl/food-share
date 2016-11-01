@@ -4,6 +4,7 @@ const db = require('APP/db')
 const Sticker = require('APP/db/models/sticker')
 const app = require('./start')
 
+
 describe('/api/stickers', () => {
   const stickers = [
           {
@@ -60,9 +61,18 @@ describe('/api/stickers', () => {
       })
   )
 
-
-
-
+  xit('POST creates a sticker', () =>
+      request(app)
+        .post('/api/stickers')
+        .send({
+          id: 3,
+          name: 'Sarah',
+          price: 99.99,
+          category: 'People',
+          picture: 'http://www.People.com'
+        })
+        .expect(201)
+    )
 
 
 

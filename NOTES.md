@@ -1,8 +1,17 @@
 # StickYoSelf
 <<<<<<< HEAD
 
+####Some Cute Stickers:
+* Stop Deforestation in the RainForest: http://www.unixstickers.com/image/data/stickers/bower/Bower.sh.png
+* Pizza for the Homeless, Because Everyone needs a good slice: http://d6ce0no7ktiq.cloudfront.net/images/preview/2015/10/05/design-5762/template-sticker-600x600.png
+* Trip Back Home for the Day of the Dead: https://ih1.redbubble.net/image.120480953.2435/sticker,375x360.png
+* Hurricane Relief: http://www.unixstickers.com/image/data/stickers/debian/debian_shaped.sh.png
+* Help Fund My Coding BootCamp: https://d21ii91i3y6o6h.cloudfront.net/gallery_images/from_proof/1488/medium/1402940451/git-icon-stickers.png
+* Stop People from Smoking!!! : http://images.mydoorsign.com/img/lg/S/no-smoking-modular-door-sign-s-9696.png
+
 
  grace shopper project:
+
 
 
  selling: stickers; for every sticker bought, a (corresponding?) wish will be fulfilled  1 : 1 sticker : wish 
