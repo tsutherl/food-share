@@ -130,7 +130,6 @@ front-end components:
 		submit order form, option to send as gift  --> ON SUBMIT:  confirmation, (send email w sticker?) (option to post to social media) 
 
 
-
 STORIES:
 
 

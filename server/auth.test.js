@@ -38,9 +38,14 @@ describe('/api/auth', () => {
       )      
   })
 
+  // auth test POST route -- this is to login, not to create a user, right?  create user should be through
+  // the epilogue RESTful routes?  
+  //changes the state of the session therefor POST 
+
   describe('GET /whoami', () => {
     describe('when logged in,', () => {
-      const agent = request.agent(app)
+      const agent = request.agent(app)   // pass express app to the request.agent function, creates agent which
+                                          // persists normally in block for tests
       before('log in', () => agent
         .post('/api/auth/local/login') 
         .send(alice))
