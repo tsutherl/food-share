@@ -18,4 +18,12 @@ describe('User', () => {
         .then(user => user.authenticate('not ok'))
         .then(result => expect(result).to.be.false))
   })
+  describe('isAdmin property', () => {
+    it('should default to false', () =>
+      User.create({
+        name: 'Cara',
+        email: 'cara@gmail.com',
+      })
+      .then(user => expect(user.isAdmin).to.be.false))
+  })
 })
