@@ -1,3 +1,16 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import { loadStickersAsync } from '../../reducers/stickers';
+import Stickers from './Stickers';
 
-export default () => (<h1> THIS IS STICKER </h1>)
+const mapStateToProps = ({stickers}) => ({stickers})
+
+const mapDispatchToProps = function (dispatch) {
+  return {
+    onLoadStickers: function () {
+      dispatch(loadStickersAsync());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stickers);
+
