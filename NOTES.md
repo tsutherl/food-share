@@ -1,5 +1,4 @@
 # StickYoSelf
-<<<<<<< HEAD
 
 ####Some Cute Stickers:
 * Stop Deforestation in the RainForest: http://www.unixstickers.com/image/data/stickers/bower/Bower.sh.png
@@ -10,9 +9,7 @@
 * Stop People from Smoking!!! : http://images.mydoorsign.com/img/lg/S/no-smoking-modular-door-sign-s-9696.png
 
 
- grace shopper project:
-
-
+#GRACE SHOPPER PROJECT:
 
  selling: stickers; for every sticker bought, a (corresponding?) wish will be fulfilled  1 : 1 sticker : wish 
 
@@ -46,7 +43,7 @@ navbar that stays there throughout browsing
 
 
 
-STORY   LIST:  
+# DETAILED STORY LIST:  
 
 
 
@@ -140,7 +137,7 @@ front-end components:
 
 
 
-STORIES:
+# STORIES:
 
 
  1.  write User model & model tests, write user routes & route tests, write front end route to display one user
