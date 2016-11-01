@@ -165,7 +165,3 @@ STORIES:
 
 
 
-
-=======
-# StickYoSelf
->>>>>>> c0627e25d8805cfe0542e3cc5d25c115888b8db9
