@@ -15,12 +15,12 @@ const stickers = require('express').Router()
     .post('/', function(req, res, next){
         Sticker.create(req.body)
         .then(sticker => {
-            res.sendStatus(201).send(sticker)
+            res.status(201).send(sticker)
         })
     })
     .get('/:id',(req, res, next) =>
     	Sticker.findById(req.params.id)
-    	.then(sticker => 
+    	.then(sticker =>
     		res.send(sticker)
     	)
     )

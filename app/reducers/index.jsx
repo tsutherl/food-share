@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import stickerReducer from './stickers'
+import {stickersReducer, stickerReducer} from './stickers'
+
 
 const rootReducer = combineReducers({
-
-  	auth: require('./auth').default,  
-	stickers: stickerReducer
-
+	stickers: stickersReducer,
+  	sticker: stickerReducer
+	auth: require('./auth').default,  
 })
 
 export default rootReducer

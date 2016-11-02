@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import HomeContainer from './components/home/HomeContainer'
 import StickersContainer from './components/stickers/StickersContainer'
+import StickerContainer from './components/stickers/StickerContainer'
 import UserContainer from './components/user/UserContainer'
 import LoginContainer from './components/login/LoginContainer'
 import App from './components/App'
@@ -23,7 +24,7 @@ render (
               <Route path='login' component={LoginContainer}/>
               <Route path='user' component={UserContainer}/>
               <Route path='stickers' component={StickersContainer}/>
-
+              <Route path='stickers/:stickerId' component={StickerContainer} />
         </Route>
 
     </Router>
