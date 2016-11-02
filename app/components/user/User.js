@@ -5,7 +5,7 @@ export default class User extends Component {
 		return(
 				<div>
 					<h3> {this.props.auth && this.props.auth.name}</h3>
-				</div>
+                </div>
 			)
 	}
 }
