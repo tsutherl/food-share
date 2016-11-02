@@ -2,7 +2,7 @@
 import React from 'react'
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
-import { Provider } from 'react-redux'
+import {connect, Provider} from 'react-redux'
 
 
 import store from './store'
@@ -12,7 +12,17 @@ import StickerContainer from './components/stickers/StickerContainer'
 import UserContainer from './components/user/UserContainer'
 import LoginContainer from './components/login/LoginContainer'
 import App from './components/App'
+import WhoAmI from './components/WhoAmI'
 
+const Main = connect(
+  ({ auth }) => ({ user: auth })
+) (
+  ({ user }) =>
+    <div>
+      {user ? <WhoAmI/> : <Login/>}
+      <Root />
+    </div>
+)
 
 render (
   <Provider store={store}>
@@ -26,7 +36,6 @@ render (
               <Route path='stickers' component={StickersContainer}/>
               <Route path='stickers/:stickerId' component={StickerContainer} />
         </Route>
-
     </Router>
   </Provider>,
   document.getElementById('main')
