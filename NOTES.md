@@ -137,7 +137,10 @@ front-end components:
 
 
 
-# STORIES:
+STORIES:
+
+
+
 
 
  1.  write User model & model tests, write user routes & route tests, write front end route to display one user
