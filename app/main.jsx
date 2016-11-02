@@ -13,6 +13,7 @@ import UserContainer from './components/user/UserContainer'
 import LoginContainer from './components/login/LoginContainer'
 import App from './components/App'
 import WhoAmI from './components/WhoAmI'
+import CartContainer from './components/cart/CartContainer'
 
 const Main = connect(
   ({ auth }) => ({ user: auth })
@@ -32,6 +33,7 @@ render (
             <IndexRedirect to='home'/>
               <Route path='home' component={HomeContainer} />
               <Route path='login' component={LoginContainer}/>
+              <Route path='cart' component={CartContainer} />
               <Route path='user' component={UserContainer}/>
               <Route path='stickers' component={StickersContainer}/>
               <Route path='stickers/:stickerId' component={StickerContainer} />

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
-import Home from './Home'
+import Cart from './Cart'
 
 export default connect(
     null,
      null)
-(Home)
+(Cart)

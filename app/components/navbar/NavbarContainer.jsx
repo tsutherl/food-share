@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
-import Home from './Home'
+import Navbar from './Navbar'
 
 export default connect(
-    null,
+    ({auth}) => ({auth}),
      null)
-(Home)
+(Navbar)
