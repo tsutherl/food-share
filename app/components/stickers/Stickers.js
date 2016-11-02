@@ -9,7 +9,6 @@ export default class Stickers extends Component {
   }
 
   render () {
-    console.log("PROPPPPPSSSSSSSS", this.props)
     return (
       <div>
         {

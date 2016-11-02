@@ -1,10 +1,18 @@
 //-------------------------REDUCER-----------------------------//
-export default function stickerReducer (state = [], action) {
+export function stickersReducer (state = [], action) {
   switch(action.type) {
     case LOAD_ALL_STICKERS: return action.stickers
+
     default: return state
   }
 };
+
+export function stickerReducer (state = {}, action) {
+  switch (action.type) {
+     case LOAD_ONE_STICKER: return action.sticker
+    default: return state;
+  }
+}
 
 //-------------------------ACTION TYPES-----------------------------//
 export const LOAD_ALL_STICKERS = 'LOAD_ALL_STICKERS';
