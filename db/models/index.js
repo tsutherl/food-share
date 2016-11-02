@@ -5,5 +5,9 @@
 // to get access to the User model.
 
 const User = require('./user')
+const Sticker = require('./sticker')
+const Order = require('./order')
 
-module.exports = {User}
+Order.belongsTo(User);
+
+module.exports = {User, Sticker, Order}
