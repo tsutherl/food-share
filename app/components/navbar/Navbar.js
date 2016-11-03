@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router'
 
-export default ({auth}) => {
+export default ({auth, logout}) => {
     console.log("MY PROPS______________",{auth})
     return ( 
         <nav className="navbar navbar-default">
@@ -23,9 +23,10 @@ export default ({auth}) => {
                 <li><Link to="/stickers">{`Swishes`}</Link></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                <li><Link to="/login">{auth? `Hello, ${auth.name}` : `Login/SignUp`}</Link></li>
                 <li><Link to="/cart"><img src="http://www.inmotionhosting.com/support/images/stories/icons/ecommerce/empty-cart-dark.png" height="23" width="23"/> </Link></li>
-              </ul>
+                <li><Link to="/login">{auth? `Hello, ${auth.name}` : `Login/SignUp`}</Link></li>
+                <li><Link to="/home"><button onClick={logout} type="button" className="btn btn-success">Logout</button></Link></li>
+                </ul>
             </div>
           </div>
         </nav>
