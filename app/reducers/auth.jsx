@@ -1,10 +1,10 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const reducer = (state=null, action) => {
   switch(action.type) {
   case AUTHENTICATED:
-    return action.user  
-  }
+    return action.user
+    }  
   return state
 }
 
@@ -34,6 +34,12 @@ export const whoami = () =>
         console.log('whoami', user)
         dispatch(authenticated(user))
       })
+      .catch(failed => dispatch(authenticated(null)))
+
+export const updateUserAsync = (newInfo, currentuser) =>
+  dispatch =>
+    axios.put('/api/users/'+ currentuser.id, newInfo)
+      .then(() => whoami())
       .catch(failed => dispatch(authenticated(null)))
 
 export default reducer
