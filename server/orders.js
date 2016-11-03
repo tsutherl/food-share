@@ -1,5 +1,6 @@
 const Order = require('APP/db/models/order');
 const User = require('APP/db/models/user');
+const Sticker = require('APP/db/models/sticker')
 
 const orders = require('express').Router()
     .get('/:orderId', (req, res, next) =>
@@ -13,16 +14,18 @@ const orders = require('express').Router()
             .catch(next))
 
     .get('/users/:userId', function(req, res, next){
-        Order.findAll({where: {
-            user_id: req.params.userId,
-            completed: false
-        }})
+        Order.findAll({
+            where: {user_id: req.params.userId,
+                    completed: false},
+            include: [{model: Sticker,
+                       as: 'product'}]
+            })
         .then(items =>
               res.send(items))
         .catch(next)
     })
 
-    .post('/users/:userId', function(req, res, next){
+    .post('/users/:userId/:productId', function(req, res, next){
         Order.findAll({
             where: {
                 user_id: req.params.userId,
@@ -30,9 +33,10 @@ const orders = require('express').Router()
             }
         })
         .then(function(items){
+          req.body.user_id = req.params.userId;
+          req.body.product_id = req.params.productId;
             if (items.length) {
               req.body.orderNumber = items[0].orderNumber;
-              req.body.user_id = req.params.userId;
               Order.create(req.body)
               .then(function(){
                 res.send(201)
@@ -45,7 +49,6 @@ const orders = require('express').Router()
               .then(function(user){
                 lastOrder = user.lastCompletedOrder
                 req.body.orderNumber = lastOrder+1;
-                req.body.user_id = req.params.userId;
                 Order.create(req.body)
                 .then(item => res.send(201))
               })
@@ -76,12 +79,20 @@ const orders = require('express').Router()
       .catch(next)
       })
     })
-    .delete('/users/:userId', function(req, res, next) {
-      Order.findOne({where: req.body})
+    .delete('/users/:orderId', function(req, res, next) {
+      Order.findOne({where: {
+        id: req.params.id}})
       .then(function(item){
-        item.destroy()
+        if(item.quantity > 1) {
+          item.update({quantity: item.quantity - 1})
+          .then(item => res.send(204))
+        } else {
+           item.destroy()
+           .then(item => res.send(204))
+        }
+
       })
-      .then(item => res.send(204))
+
 
     })
 

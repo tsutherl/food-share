@@ -25,6 +25,7 @@ const Main = connect(
     </div>
 )
 
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>

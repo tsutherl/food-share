@@ -1,3 +1,6 @@
+import axios from 'axios'
+
+
 export function cartReducer (state = [], action) {
   switch(action.type) {
     case GET_CART_ITEMS: return action.items
@@ -11,6 +14,7 @@ export function cartReducer (state = [], action) {
 export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 
 
+
 //-------------------------ACTION CREATORS-----------------------------//
 
 const loadItems = function (items) {
@@ -19,6 +23,7 @@ const loadItems = function (items) {
     items
   };
 };
+
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)---------------------------//
 export const loadItemsAsync = function (userId) {
@@ -32,4 +37,14 @@ export const loadItemsAsync = function (userId) {
   };
 };
 
+export const deleteFromCart = function(orderId, userId) {
+  return function(dispatch) {
+    axios.delete('/api/orders/users/' + orderId)
+    .then(res => res.json())
+    .then(items => {
+      dispatch(loadItemsAsync(userId))
+    })
+    .catch(err => console.error(err))
+  }
+}
 
