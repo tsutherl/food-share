@@ -3,8 +3,7 @@ import axios from 'axios'
 
 export function cartReducer (state = [], action) {
   switch(action.type) {
-    case GET_CART_ITEMS: return action.items
-
+    case GET_CART_ITEMS: return action.items;
     default: return state
   }
 };
@@ -12,7 +11,7 @@ export function cartReducer (state = [], action) {
 
 //-------------------------ACTION TYPES-----------------------------//
 export const GET_CART_ITEMS = 'GET_CART_ITEMS';
-
+export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
 
 
 //-------------------------ACTION CREATORS-----------------------------//
@@ -23,7 +22,6 @@ const loadItems = function (items) {
     items
   };
 };
-
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)---------------------------//
 export const loadItemsAsync = function (userId) {
@@ -48,3 +46,12 @@ export const deleteFromCart = function(orderId, userId) {
   }
 }
 
+// export const addToCartAsync = function (userId, productId) {
+//   return function(dispatch) {
+//     axios.post('api/orders/users/' + userId + '/' + productId)
+//     .then(item => {
+//        dispatch(loadItemsAsync(userId));
+//     })
+//     .catch(err => console.error(err))
+//   }
+// }

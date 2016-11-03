@@ -5,7 +5,7 @@ export default class Cart extends Component {
   componentDidMount() {
     const user = this.props.user;
     console.log("THE PROPS ON CART", this.props)
-    this.props.onLoadItems(user.id);
+    user && this.props.onLoadItems(user.id);
 
   }
 

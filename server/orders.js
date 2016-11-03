@@ -3,7 +3,7 @@ const User = require('APP/db/models/user');
 const Sticker = require('APP/db/models/sticker')
 
 const orders = require('express').Router()
-    .get('/:orderId', (req, res, next) =>
+    .get('/:orderId/:userId', (req, res, next) =>
         Order.findAll({where: {
             orderNumber: req.params.orderId
                 }
@@ -13,7 +13,7 @@ const orders = require('express').Router()
             )
             .catch(next))
 
-    .get('/users/:userId', function(req, res, next){
+    .get('/users/:userId', function(req, res, next){  //get pending items (cart items)
         Order.findAll({
             where: {user_id: req.params.userId,
                     completed: false},
@@ -38,8 +38,8 @@ const orders = require('express').Router()
             if (items.length) {
               req.body.orderNumber = items[0].orderNumber;
               Order.create(req.body)
-              .then(function(){
-                res.send(201)
+              .then(function(item){
+                res.status(201).json(item)
               })
               .catch(next)
             }//add new item to current cart
@@ -50,7 +50,7 @@ const orders = require('express').Router()
                 lastOrder = user.lastCompletedOrder
                 req.body.orderNumber = lastOrder+1;
                 Order.create(req.body)
-                .then(item => res.send(201))
+                .then(item => res.status(201).json(item))
               })
               .catch(next)
             } //make new cart

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { loadStickerAsync } from '../../reducers/stickers';
 import Sticker from './Sticker';
+import {addToCartAsync} from 'APP/app/reducers/cart';
+
 
 const mapStateToProps = ({sticker}) => ({sticker})
 
