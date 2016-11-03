@@ -81,8 +81,9 @@ const orders = require('express').Router()
     })
     .delete('/users/:orderId', function(req, res, next) {
       Order.findOne({where: {
-        id: req.params.id}})
+        id: req.params.orderId}})
       .then(function(item){
+        console.log("----", item)
         if(item.quantity > 1) {
           item.update({quantity: item.quantity - 1})
           .then(item => res.send(204))

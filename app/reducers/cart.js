@@ -40,7 +40,7 @@ export const loadItemsAsync = function (userId) {
 export const deleteFromCart = function(orderId, userId) {
   return function(dispatch) {
     axios.delete('/api/orders/users/' + orderId)
-    .then(res => res.json())
+    // .then(res => res.json())
     .then(items => {
       dispatch(loadItemsAsync(userId))
     })
