@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 
 export default class Cart extends Component {
 
   componentDidMount() {
     const user = this.props.user;
     user && this.props.onLoadItems(user.id);
+
 
   }
 
@@ -13,13 +15,42 @@ export default class Cart extends Component {
       <div id="cart-container">
         <div className="main-content">
           <h2 className="full-line">{this.props.user && this.props.user.name}'s Cart</h2>
+          <table className="table">
+            <thead>
+              <tr>
+                <th className="cart-table-hdg"></th>
+                <th className="cart-table-hdg">swish</th>
+                <th className="cart-table-hdg">price</th>
+                <th className="cart-table-hdg">qty</th>
+                <th className="cart-table-hdg">total price</th> 
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
 
           {this.props.items &&
             this.props.items.map((item, idx) => (
-            <li className="cart-list" key={idx}><img src={item.product.picture} className="cart-pic" /> {item.product.name} <span>qty: {item.quantity}</span><button onClick = {() => this.props.deleteItem(item.id, item.user_id)}className= "btn-cart-remove"><img src ="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_12-512.png" /></button> </li>
+            <tr className="cart-list" key={idx}>
+              <td>
+                <Link to={"/stickers/" + item.product.id}>
+                  <img src={item.product.picture} className="cart-pic" /> 
+                </Link>
+              </td>
+              <td className="cart-item">{item.product.name}</td>
+              <td className="cart-item">{item.product.price}</td>
+              <td className="cart-item">{item.quantity}</td>
+              <td className="cart-item">{item.quantity * item.product.price}</td>
+              <td>
+                <button onClick = {() => this.props.deleteItem(item.id, item.user_id)}
+                  className= "btn-cart-remove">
+                  <img src ="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_12-512.png" />
+                </button>
+              </td> 
+            </tr>
             ))
           }
-
+          </tbody>
+        </table>
         </div>
       </div>
     );

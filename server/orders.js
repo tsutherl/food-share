@@ -3,6 +3,7 @@ const User = require('APP/db/models/user');
 const Sticker = require('APP/db/models/sticker')
 
 const orders = require('express').Router()
+
     .get('/users/:userId', function(req, res, next){  //get pending items (cart items)
         Order.findAll({
             where: {user_id: req.params.userId,
@@ -10,8 +11,7 @@ const orders = require('express').Router()
             include: [{model: Sticker,
                        as: 'product'}]
             })
-        .then(items =>
-              res.send(items))
+        .then(items => res.send(items))
         .catch(next)
     })
     .get('/:orderId/:userId', (req, res, next) =>
