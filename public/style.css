@@ -77,3 +77,13 @@ a h5 {
   width: 100%;
   height: auto;
 }
+
+ 
+body {
+    background: url('https://i.ytimg.com/vi/4TOvd8L1UWs/maxresdefault.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+
