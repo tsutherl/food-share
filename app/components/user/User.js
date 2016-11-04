@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router'
 
 export default class User extends Component {
 	constructor (){
@@ -28,7 +29,11 @@ export default class User extends Component {
 						  <p> Below are more options for your account </p>
 						</div>
 					</div>
-					
+					<div className="well container center_div">
+						<h3> Order History </h3>
+						<Link to="/user/orders"><button type="button" className="btn btn-success">View More Orders...</button></Link>
+					</div>
+					<hr/>
 					<div className='center_div container'>
 						<h3> Settings </h3>
 						<form onSubmit={(evt)=>{
