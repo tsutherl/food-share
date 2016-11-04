@@ -46,12 +46,12 @@ export const deleteFromCart = function(orderId, userId) {
   }
 }
 
-// export const addToCartAsync = function (userId, productId) {
-//   return function(dispatch) {
-//     axios.post('api/orders/users/' + userId + '/' + productId)
-//     .then(item => {
-//        dispatch(loadItemsAsync(userId));
-//     })
-//     .catch(err => console.error(err))
-//   }
-// }
+export const addToCartAsync = function (userId, productId) {
+  return function(dispatch) {
+    axios.post('api/orders/users/' + userId + '/' + productId)
+    .then(item => {
+       dispatch(loadItemsAsync(userId));
+    })
+    .catch(err => console.error(err))
+  }
+}
