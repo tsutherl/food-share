@@ -107,7 +107,14 @@ a h5 {
 }
 
 
-/*-------------------navbar css----------------------*/
+.navbar{
+  margin-bottom: 0px;
+}
+
+.home-cover {
+  height:1000px;
+  color:white;
+  background: url('https://i.ytimg.com/vi/4TOvd8L1UWs/maxresdefault.jpg') no-repeat center center fixed;
 
 .navbar-nav li a {
   line-height: 32px;
@@ -125,10 +132,14 @@ a.navbar-brand {
   height: 64px;
 }
 
-body {
-    background: url('https://i.ytimg.com/vi/4TOvd8L1UWs/maxresdefault.jpg') no-repeat center center fixed;
-    background-size: cover;
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
 }
+
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
