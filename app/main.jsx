@@ -3,7 +3,8 @@ import React from 'react'
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
-
+import {loadItemsAsync} from './reducers/cart'
+import {whoami} from './reducers/auth'
 
 import store from './store'
 import HomeContainer from './components/home/HomeContainer'
@@ -16,6 +17,23 @@ import WhoAmI from './components/WhoAmI'
 import CartContainer from './components/cart/CartContainer'
 import UserOrdersContainer from './components/user/UserOrdersContainer'
 
+
+
+ 
+    
+const fetchCart = (nextState, _replace, done) => {
+  store.dispatch(whoami())
+    .then(auth => {
+      store.dispatch(loadItemsAsync(auth.user.id))
+  })
+    .then(()=> done())
+}
+
+
+
+    //onEnter function (nextState, replace, callback)  react router onENter
+
+// EXAMPLE CODE ONLY
 const Main = connect(
   ({ auth }) => ({ user: auth })
 ) (
@@ -27,6 +45,7 @@ const Main = connect(
 )
 
 
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -35,7 +54,7 @@ render (
             <IndexRedirect to='home'/>
               <Route path='home' component={HomeContainer} />
               <Route path='login' component={LoginContainer}/>
-              <Route path='cart' component={CartContainer} />
+              <Route path='cart' component={CartContainer} onEnter={fetchCart} />
               <Route path='user' component={UserContainer}/>
               <Route path='user/orders' component={UserOrdersContainer}/>
               <Route path='stickers' component={StickersContainer}/>

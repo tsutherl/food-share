@@ -32,7 +32,7 @@ export const whoami = () =>
       .then(response => {
         const user = response.data
         console.log('whoami', user)
-        dispatch(authenticated(user))
+        return dispatch(authenticated(user))
       })
       .catch(failed => dispatch(authenticated(null)))
 
