@@ -24,6 +24,7 @@ export default class Cart extends Component {
                 <th className="cart-table-hdg">price</th>
                 <th className="cart-table-hdg">qty</th>
                 <th className="cart-table-hdg">total price</th> 
+                <th></th>
               </tr>
             </thead>
             <tbody>
