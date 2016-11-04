@@ -10,4 +10,6 @@ const Order = require('./order')
 
 Order.belongsTo(User);
 
+Order.belongsTo(Sticker, {as: 'product'})
+
 module.exports = {User, Sticker, Order}

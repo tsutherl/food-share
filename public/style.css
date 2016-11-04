@@ -1,0 +1,79 @@
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sticker-div {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 33%;
+  height: 40%;
+}
+
+.sticker-div a img {
+  height: 230px;      /* need to change this to allow for screen resize */
+  width: auto;
+  display: inline;
+  margin: 0 auto;
+}
+
+a h5 {
+  margin: 0 auto;
+}
+
+.btn {
+  width: 25%;
+  display: inline;
+}
+
+
+
+#cart-container {
+  display: flex;
+  width: 100%;
+}
+
+.main-content {
+  margin-left: 8%;
+  width: 100%;
+}
+
+.full-line {
+  width: 100%;
+}
+
+.btn-cart-remove {
+  outline: none;
+  background-color: transparent;
+  border-radius: none;
+  border: none;
+  height: 50px;
+  width: 20px;
+  line-height: 40%;
+  margin-left: 15px;
+  float: right;
+  padding: 0;
+}
+.btn-cart-remove img {
+  width: 100%;
+  height: auto;
+}
+
+.cart-list {
+  list-style: none;
+  font-size: 20px;
+  margin-left: 2%;
+  width: 25%;
+  height: 50px;
+}
+
+.cart-pic {
+  width: 50px;
+  height: 50px;
+}
+
+.cart-pic img {
+  width: 100%;
+  height: auto;
+}

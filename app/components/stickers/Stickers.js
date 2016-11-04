@@ -10,15 +10,16 @@ export default class Stickers extends Component {
 
   render () {
     return (
-      <div>
+      <div className="flex-container">
         {
           this.props.stickers.map(sticker => {
+            console.log("STICKER INSIDE MAP___", sticker)
             return (
-              <ul key={sticker.id} className="list-unstyled">
-                <li className="col-sm-4">
-                  <Link to={"/stickers/" + sticker.id}> <img src = {sticker.picture}/> { sticker.name }</Link>
-                </li>
-              </ul>
+              <div className="sticker-div" key={sticker.id}>
+                  <Link to={"/stickers/" + sticker.id}> <img src = {sticker.picture}/> <h5>{ sticker.name }</h5></Link>
+                  <button onClick={()=> this.props.addToCart(this.props.user.id, sticker.id)} className="btn btn-info">add to cart</button>
+
+              </div>
             )
           })
         }
