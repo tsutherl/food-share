@@ -33,9 +33,10 @@ export default class Cart extends Component {
               <td>
                 <img src={item.product.picture} className="cart-pic" /> 
               </td>
-              <td>{item.product.name}</td>
-              <td>{item.product.price}</td>
-              <td>{item.quantity}</td>
+              <td className="cart-item">{item.product.name}</td>
+              <td className="cart-item">{item.product.price}</td>
+              <td className="cart-item">{item.quantity}</td>
+              <td className="cart-item">{item.quantity * item.product.price}</td>
               <td>
                 <button onClick = {() => this.props.deleteItem(item.id, item.user_id)}
                   className= "btn-cart-remove">

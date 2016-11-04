@@ -4,12 +4,15 @@
 // so any other part of the application could call sequelize.model('User')
 // to get access to the User model.
 
-const User = require('./user')
-const Sticker = require('./sticker')
-const Order = require('./order')
+const User = require('./user');
+const Sticker = require('./sticker');
+const Order = require('./order');
+const OrderMaster = require('./orderMaster');
 
 Order.belongsTo(User);
 
-Order.belongsTo(Sticker, {as: 'product'})
+Order.belongsTo(Sticker, {as: 'product'});
+
+Order.belongsTo(OrderMaster, {as: 'masterKey'})
 
 module.exports = {User, Sticker, Order}
