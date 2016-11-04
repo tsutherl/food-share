@@ -11,7 +11,6 @@ const mapDispatchToProps = function (dispatch) {
       dispatch(loadStickersAsync());
     },
     addToCart: function(userId, productId) {
-      console.log("in addToCart")
       dispatch(addToCartAsync(userId, productId));
     }
   };
