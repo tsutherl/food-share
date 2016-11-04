@@ -13,7 +13,6 @@ export default class Stickers extends Component {
       <div className="flex-container">
         {
           this.props.stickers.map(sticker => {
-            console.log("STICKER INSIDE MAP___", sticker)
             return (
               <div className="sticker-div" key={sticker.id}>
                   <Link to={"/stickers/" + sticker.id}> <img src = {sticker.picture}/> <h5>{ sticker.name }</h5></Link>

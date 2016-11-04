@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 
 export default class Cart extends Component {
 
@@ -31,7 +32,9 @@ export default class Cart extends Component {
             this.props.items.map((item, idx) => (
             <tr className="cart-list" key={idx}>
               <td>
-                <img src={item.product.picture} className="cart-pic" /> 
+                <Link to={"/stickers/" + item.product.id}>
+                  <img src={item.product.picture} className="cart-pic" /> 
+                </Link>
               </td>
               <td className="cart-item">{item.product.name}</td>
               <td className="cart-item">{item.product.price}</td>
