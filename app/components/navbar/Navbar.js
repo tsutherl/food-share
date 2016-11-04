@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 
 export default ({auth, logout}) => {
     console.log("MY PROPS______________",{auth})
-    return ( 
+    return (
         <nav className="navbar navbar-default">
           <div className="container-fluid">
 
@@ -19,7 +19,7 @@ export default ({auth, logout}) => {
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li className="active"><Link to="/home">Home <span className="sr-only">(current)</span></Link></li>
+                <li className="active"><Link to="/home">Home</Link></li>
                 <li><Link to="/stickers">{`Swishes`}</Link></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">

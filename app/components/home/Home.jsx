@@ -7,12 +7,13 @@ export default class Home extends Component {
      <div> 
       <a name="about"></a>
         <div className="intro-header">
+            <section>
             <div className="container">
 
-                <div className="row">
+                <div className="row text-center">
                     <div className="col-lg-12">
                         <div className="intro-message">
-                            <h1 className='center-block'>Make A Swish</h1>
+                            <h1 className='center-block text-center'>Make A Swish</h1>
                             <h3>And Watch It Come True</h3>
                             <hr className="intro-divider"/>
                             <ul className="list-inline intro-social-buttons">
@@ -25,6 +26,7 @@ export default class Home extends Component {
                 </div>
 
             </div>
+            </section>
         </div>
       </div>
     )
