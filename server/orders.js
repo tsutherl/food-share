@@ -1,9 +1,22 @@
 const Order = require('APP/db/models/order');
 const User = require('APP/db/models/user');
-const Sticker = require('APP/db/models/sticker')
+const Sticker = require('APP/db/models/sticker');
+const OrderMaster = require('APP/db/models/orderMaster');
 
 const orders = require('express').Router()
-
+    .get('/orderMaster/:masterId', function(req,res,next){
+        OrderMaster.findOne({
+          where: {id: req.params.masterId}
+        })
+        .then((fullOrder) => {
+          return fullOrder.getOrders()
+        })
+        .then((orderItems) => {
+          res.send(orderItems)
+        })
+        .catch(next)
+    })
+    
     .get('/users/:userId', function(req, res, next){  //get pending items (cart items)
         Order.findAll({
             where: {user_id: req.params.userId,
@@ -36,6 +49,7 @@ const orders = require('express').Router()
           req.body.product_id = req.params.productId;
             if (items.length) {
               req.body.orderNumber = items[0].orderNumber;
+              req.body.order_master_id= items[0].order_master_id;
               Order.findOne({
                 where: {
                   user_id: req.params.userId,
@@ -62,19 +76,24 @@ const orders = require('express').Router()
             }
             //add new item to current cart
             else {
-              let lastOrder;
-              User.findById(req.params.userId)
-              .then(function(user){
-                lastOrder = user.lastCompletedOrder
-                req.body.orderNumber = lastOrder+1;
-                req.body.quantity = 1;
-                Order.create(req.body)
-                .then(item => res.status(201).json(item))
-              })
+              OrderMaster.create({})
+                .then(fullOrder => {  
+                  let lastOrder;
+                  User.findById(req.params.userId)
+                  .then(function(user){
+                    lastOrder = user.lastCompletedOrder
+                    req.body.orderNumber = lastOrder+1;
+                    req.body.quantity = 1;
+                    req.body.order_master_id = fullOrder.id;
+                    Order.create(req.body)
+                    .then(item => res.status(201).json(item))
+                  })
+                })
               .catch(next)
             } //make new cart
         })
     })
+
     .put('/users/:userId', function(req, res, next){
       let currentOrder;
       Order.findAll({where: {
