@@ -5,5 +5,17 @@ module.exports = db.define('orderMaster', {
 	total: {
 		type: Sequelize.FLOAT
 	},
-	completed: Sequelize.BOOLEAN	
+	completed: {
+		type: Sequelize.BOOLEAN,
+		defaultValue: false
+	},
+	purchaseMsg: Sequelize.TEXT		,
+	purchaserEmail: {
+		type: Sequelize.STRING,
+		validate: {isEmail: true}
+	},
+	sendToEmail: {
+		type: Sequelize.STRING,
+		validate: {isEmail: true}
+	}
 })
