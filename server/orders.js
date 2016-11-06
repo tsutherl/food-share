@@ -9,12 +9,23 @@ const orders = require('express').Router()
           where: {id: req.params.masterId}
         })
         .then((fullOrder) => {
-          return fullOrder.getOrders()
+          return fullOrder.getOrders()   //I think this is not working... check assoc methods
         })
         .then((orderItems) => {
           res.send(orderItems)
         })
         .catch(next)
+    })
+
+    .put('/orderMaster/:masterId', function(req, res, next){
+      console.log("in PUT req");
+      OrderMaster.findById(req.params.masterId)
+      .then(fullOrder => {
+        console.log("fullOrder", fullOrder);
+        fullOrder.update({completed: true, purchaseMsg: req.body.msg})
+      })
+      .then(()=> res.sendStatus(201))
+      .catch(next)
     })
     
     .get('/users/:userId', function(req, res, next){  //get pending items (cart items)

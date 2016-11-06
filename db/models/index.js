@@ -17,4 +17,4 @@ Order.belongsTo(OrderMaster);
 
 OrderMaster.hasMany(Order);
 
-module.exports = {User, Sticker, Order}
+module.exports = {User, Sticker, Order, OrderMaster}
