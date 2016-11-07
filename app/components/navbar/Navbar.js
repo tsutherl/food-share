@@ -13,7 +13,7 @@ export default ({auth, logout}) => {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">StickYoSelf</a>
+              <Link to="/home" className="navbar-brand" href="#">StickYoSelf</Link>
             </div>
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
