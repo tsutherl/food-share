@@ -13,6 +13,8 @@ Order.belongsTo(User);
 
 Order.belongsTo(Sticker, {as: 'product'});
 
-Order.belongsTo(OrderMaster, {as: 'masterKey'})
+Order.belongsTo(OrderMaster);
 
-module.exports = {User, Sticker, Order}
+OrderMaster.hasMany(Order);
+
+module.exports = {User, Sticker, Order, OrderMaster}
