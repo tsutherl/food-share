@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {browserHistory} from 'react-router'
 
 export default class Checkout extends Component {
   constructor (){
@@ -13,7 +14,7 @@ export default class Checkout extends Component {
 
   updateSendToEmail (evt){this.setState({sendToEmail: evt.target.value})}
   updateMessage (evt){this.setState({purchaseMsg: evt.target.value})}
-  
+
 
   render () {
     const orderId = this.props.items[0].order_master_id
@@ -24,9 +25,11 @@ export default class Checkout extends Component {
       <div className='center_div container '>
         <form onSubmit={(evt)=> {
           evt.preventDefault()
-          console.log(total)
           const orderInfo = Object.assign({}, this.state, {purchaserEmail: this.props.auth.email, total: total})
-          this.props.placeOrder(orderInfo, orderId, this.props.auth.id)}}>
+            this.props.placeOrder(orderInfo, orderId, this.props.auth.id)
+            this.props.checkoutMessage('Success! You should recieve an email confirmation shortly.')
+            browserHistory.push('/home')
+          }}>
           <div className="form-group">
             <label>Email My Swish To:</label>
             <input onChange={this.updateSendToEmail}type="email" className="form-control" placeholder="Email"/>
@@ -43,3 +46,6 @@ export default class Checkout extends Component {
     )
   }
 }
+
+
+//soooo we don't have to .then before pushing onto browserHistory because placeOrder isn't async? so it waits for placeOrder and then pushes onto browserHistory?
