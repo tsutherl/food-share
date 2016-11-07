@@ -51,6 +51,7 @@ export default class Cart extends Component {
           }
           </tbody>
         </table>
+        <Link to="/checkout"><button type="button" className="btn btn-success">Checkout</button></Link>
         </div>
       </div>
     );
