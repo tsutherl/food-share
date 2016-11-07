@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Login from './Login';
-import {login, whoami} from 'APP/app/reducers/auth'
+import {login, whoami, signup} from 'APP/app/reducers/auth'
 import store from '../../store'
 
 
@@ -12,6 +12,9 @@ const mapDispatchToProps= function (dispatch) {
     },
     newAuth: function() {
       		return store.getState();
+    },
+    signup: function (fullname, email, password) {
+      return dispatch(signup(fullname, email, password));
     }
   };
 };

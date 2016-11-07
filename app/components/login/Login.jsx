@@ -6,7 +6,8 @@ export default class Login extends Component {
 	render (){
 		const newAuth= this.props.newAuth;
 		return (
-			  <div>
+			  <div className="login-signup">
+			  <h3>Login</h3>
 			  <form onSubmit={evt => {
 			    evt.preventDefault()
 			    this.props.login(evt.target.username.value, evt.target.password.value)
@@ -19,12 +20,46 @@ export default class Login extends Component {
 			    	}
 			    })
 			  } }>
-			    <input name="username" />
-			    <input name="password" type="password" />
+			    <input name="username" placeholder="Email"/>
+			    <br/>
+			    <br/>
+			    <input name="password" type="password" placeholder="Password"/>
+			    <br/>
+			    <br/>
 			    <input type="submit" value="Login" />
+			  </form>
+			  <hr className="signup"/>
+			  <h3>Or Signup</h3>
+			  <form onSubmit={evt => {
+			    evt.preventDefault()
+			    this.props.signup(evt.target.name.value,evt.target.email.value, evt.target.password.value)
+			    .then(function(){ 
+			    	browserHistory.push('/home')	
+			    	
+			    })
+			  } }>
+			    <input name="name" placeholder="Name" />
+			    <br/>
+			    <br/>
+			    <input name="email" placeholder="Email"/>
+			    <br/>
+			    <br/>
+			    <input name="password" type="password" placeholder="password"/>
+			    <br/>
+			    <br/>
+			    <input type="submit" value="Signup" />
 			  </form>
 			  </div>
 			)
 	 }
 }
+
+
+
+
+//full name
+//email
+//password
+//confirm password
+
 
