@@ -11,7 +11,6 @@ export function cartReducer (state = [], action) {
 
 //-------------------------ACTION TYPES-----------------------------//
 export const GET_CART_ITEMS = 'GET_CART_ITEMS';
-export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
 
 
 //-------------------------ACTION CREATORS-----------------------------//
