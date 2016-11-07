@@ -22,9 +22,10 @@ const orders = require('express').Router()
       OrderMaster.findById(req.params.masterId)
       .then(fullOrder => {
         console.log("fullOrder", fullOrder);
-        fullOrder.update({completed: true, purchaseMsg: req.body.msg})
+        let updatedOrder = Object.assign({completed: true}, req.body)
+        return fullOrder.update(updatedOrder)
       })
-      .then(()=> res.sendStatus(201))
+      .then((updatedOrder)=> res.status(201).json(updatedOrder))
       .catch(next)
     })
     
@@ -113,6 +114,7 @@ const orders = require('express').Router()
       }})
       .then(function(items){
         currentOrder = items[0].orderNumber
+        console.log('CURRENT', currentOrder)
         Promise.all(
         items = items.map(function(item){
           item.update({completed: true})
@@ -120,9 +122,9 @@ const orders = require('express').Router()
       .then(function(items){
         User.findById(req.params.userId)
         .then(function(user){
-          user.update({lastCompletedOrder: currentOrder})
+          return user.update({lastCompletedOrder: currentOrder})
         })
-        .then(user => res.send(201))
+        .then(updateUser => res.status(201).json(updatedUser))
 
       })
       .catch(next)
