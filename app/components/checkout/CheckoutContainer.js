@@ -15,8 +15,8 @@ const mapDispatchToProps= function (dispatch) {
     placeOrder: function(order, masterId, userId) {
       return dispatch(addOrderAsync(order, masterId, userId));
     },
-    sendEmail: function(email){
-      return dispatch(sendEmail(email));
+    sendEmail: function(email,order,total){
+      return dispatch(sendEmail(email,order,total));
     }
    
   };

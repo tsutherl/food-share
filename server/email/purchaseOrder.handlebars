@@ -1,6 +1,23 @@
-
 <h2>Hello, {{username}} </h2>
 Thank you for purchasing a swish on StickYoSelf!
 Below are your order details and your swish!
 <hr>
+<h4>Your Swishes:</h4>
+<!-- BEGIN PRODUCT LOOP // -->
+   {{#each order}}
+   <tr class="item">
+        <td valign="top" class="textContent">
+            <img src="{{this.product.picture}}" width="50" height="75" class="itemImage" />
+            <h4 class="itemName">{{this.product.name}}</h4>
+            <span class="contentSecondary">Qty: {{this.quantity}} x ${{this.product.price}}/each</span><br />
+            <span class="contentSecondary"><em>{{this.product.category}}</em></span><br />
+            <span class="contentSecondary itemDescription">{{this.product.wish}}</span>
+        </td>
+    </tr>
+    <hr>
+    {{/each}}
+<!-- // END PRODUCT LOOP -->
+
+<h4>Total:</h4>
+{{total}}
 

@@ -40,7 +40,9 @@ const orders = require('express').Router()
           subject: 'Your Purchase', 
           template: 'purchaseOrder',
           context: {
-            username: 'Susan'//(req.body.user.name)
+            username: 'Partner',//(req.body.user.name)
+            order: req.body.order,
+            total: req.body.total
           }
         },
         //it takes a callback function, it sends "good email" to the route if the email sent correctly. 
