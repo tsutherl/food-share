@@ -26,7 +26,10 @@ import axios from 'axios'
 // };
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)---------------------------//
-
+export const sendEmail= function (){
+  axios.get('/api/orders/sendmail')
+  .then(()=>{});
+}
 //parallel ajaxs request ok?
 export const addOrderAsync = function (order, masterId, userId) {
   console.log('DA STUFF',order, masterId, userId)

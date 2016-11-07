@@ -26,7 +26,9 @@ export default class Checkout extends Component {
           evt.preventDefault()
           console.log(total)
           const orderInfo = Object.assign({}, this.state, {purchaserEmail: this.props.auth.email, total: total})
-          this.props.placeOrder(orderInfo, orderId, this.props.auth.id)}}>
+          this.props.placeOrder(orderInfo, orderId, this.props.auth.id)
+           this.props.sendEmail()
+        }}>
           <div className="form-group">
             <label>Email My Swish To:</label>
             <input onChange={this.updateSendToEmail}type="email" className="form-control" placeholder="Email"/>
