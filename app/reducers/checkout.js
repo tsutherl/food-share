@@ -26,8 +26,8 @@ import axios from 'axios'
 // };
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)---------------------------//
-export const sendEmail= function (){
-  axios.get('/api/orders/sendmail')
+export const sendEmail= function (email){
+  axios.post('/api/orders/sendmail',{email:email})
   .then(()=>{});
 }
 //parallel ajaxs request ok?

@@ -27,7 +27,7 @@ export default class Checkout extends Component {
           console.log(total)
           const orderInfo = Object.assign({}, this.state, {purchaserEmail: this.props.auth.email, total: total})
           this.props.placeOrder(orderInfo, orderId, this.props.auth.id)
-           this.props.sendEmail()
+           this.props.sendEmail(this.state.sendToEmail)
         }}>
           <div className="form-group">
             <label>Email My Swish To:</label>

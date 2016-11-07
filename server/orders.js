@@ -29,12 +29,14 @@ mailer.use('compile', hbs({
 
 const orders = require('express').Router()
     //this is where the magic happens. 
-    .get('/sendMail', function(req,res,next){
+
+    .post('/sendMail', function(req,res,next){
+      console.log("------------------",req.body)
       //this is where the email data is sent. We use the .sendMail to send an email
       mailer.sendMail(
         {
           from: 'stick.yoself1609@gmail.com', //it is the same as the smtp email
-          to: 'kh.brooks02@gmail.com',//(req.body.email) //the person that you are going to send it to, I put my email
+          to: req.body.email,//(req.body.email) //the person that you are going to send it to, I put my email
           subject: 'Your Purchase', 
           template: 'purchaseOrder',
           context: {
@@ -66,10 +68,8 @@ const orders = require('express').Router()
     })
 
     .put('/orderMaster/:masterId', function(req, res, next){
-      console.log("in PUT req");
       OrderMaster.findById(req.params.masterId)
       .then(fullOrder => {
-        console.log("fullOrder", fullOrder);
         let updatedOrder = Object.assign({completed: true}, req.body)
         return fullOrder.update(updatedOrder)
       })
@@ -162,7 +162,6 @@ const orders = require('express').Router()
       }})
       .then(function(items){
         currentOrder = items[0].orderNumber
-        console.log('CURRENT', currentOrder)
         Promise.all(
         items = items.map(function(item){
           item.update({completed: true})
@@ -182,7 +181,6 @@ const orders = require('express').Router()
       Order.findOne({where: {
         id: req.params.orderId}})
       .then(function(item){
-        console.log("----", item)
         if(item.quantity > 1) {
           item.update({quantity: item.quantity - 1})
           .then(item => res.send(204))
