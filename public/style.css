@@ -142,6 +142,18 @@ a.navbar-brand {
   align-items: center;
 }
 
+.login-signup {
+  margin: 5% 10%;
+}
+hr.signup {
+  width: 20%;
+  float: left;
+}
+
+h3 {
+  clear: both;
+}
+
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
