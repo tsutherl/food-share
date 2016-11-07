@@ -19,7 +19,8 @@ const mailer= nodemailer.createTransport({
   }
 })
 
-//I want my emails to use a template I store in this location
+//I want my emails to use a template I store in this location (server/email/purchaseOrder)
+//The template on that file is just like nunjucks. 
 mailer.use('compile', hbs({
   viewPath: 'server/email', 
   ext: '.hbs'
@@ -32,17 +33,17 @@ const orders = require('express').Router()
 
     .post('/sendMail', function(req,res,next){
       console.log("------------------",req.body)
-      //this is where the email data is sent. We use the .sendMail to send an email
+      //this is where the email data is sent. We use the .sendMail to send an email with the email data and callback function
       mailer.sendMail(
         {
           from: 'stick.yoself1609@gmail.com', //it is the same as the smtp email
-          to: req.body.email,//(req.body.email) //the person that you are going to send it to, I put my email
+          to: req.body.email,//the person that you are going to send it to
           subject: 'Your Purchase', 
           template: 'purchaseOrder',
-          context: {
-            username: 'Partner',//(req.body.user.name)
-            order: req.body.order,
-            total: req.body.total
+          context: { //the context is passed to the template. It is the data we access. For example: {{total}}
+            username: 'Partner',
+            order: req.body.order,//I pass the whole order from the database. In the template I break apart the details
+            total: req.body.total //the total cost of the order
           }
         },
         //it takes a callback function, it sends "good email" to the route if the email sent correctly. 
