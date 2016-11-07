@@ -3,7 +3,55 @@ const User = require('APP/db/models/user');
 const Sticker = require('APP/db/models/sticker');
 const OrderMaster = require('APP/db/models/orderMaster');
 
+//Require in Nodemailer and handlebars for email templates (we want to use templates because we send this to multiple users)
+const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
+
+//Nodemailer requires a transport, we use the email that we are gonna send emails from 
+//I used gmail as my server.. the setup info for smtp can be found on their website (https://support.google.com/a/answer/176600?hl=en)
+const mailer= nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, 
+  auth: {
+    user: 'stick.yoself1609@gmail.com',//have to put the gmail username
+    pass: 'gracehopper' //have to put the gmail password
+  }
+})
+
+//I want my emails to use a template I store in this location
+mailer.use('compile', hbs({
+  viewPath: 'server/email', 
+  ext: '.hbs'
+}))
+
+
+
 const orders = require('express').Router()
+    //this is where the magic happens. 
+    .get('/sendMail', function(req,res,next){
+      //this is where the email data is sent. We use the .sendMail to send an email
+      mailer.sendMail(
+        {
+          from: 'stick.yoself1609@gmail.com', //it is the same as the smtp email
+          to: 'kh.brooks02@gmail.com',//(req.body.email) //the person that you are going to send it to, I put my email
+          subject: 'Your Purchase', 
+          template: 'purchaseOrder',
+          context: {
+            username: 'Susan'//(req.body.user.name)
+          }
+        },
+        //it takes a callback function, it sends "good email" to the route if the email sent correctly. 
+        function(err, response){
+          if(err){
+            console.log(err);
+            return res.send('bad email');
+          }
+          return res.send('good email');
+        })
+      }
+    )
+
     .get('/orderMaster/:masterId', function(req,res,next){
         OrderMaster.findOne({
           where: {id: req.params.masterId}
@@ -27,7 +75,7 @@ const orders = require('express').Router()
       .then(()=> res.sendStatus(201))
       .catch(next)
     })
-    
+
     .get('/users/:userId', function(req, res, next){  //get pending items (cart items)
         Order.findAll({
             where: {user_id: req.params.userId,
