@@ -17,7 +17,7 @@ const User = db.define('users', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
-  lastCompletedOrder: {
+  lastCompletedOrder: {                // can delete this once all the OrderMaster control is implemented
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
