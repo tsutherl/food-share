@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
 import React from 'react'
+=======
+import React, { Component } from 'react';
+import {browserHistory} from 'react-router'
+ 
+export default class Login extends Component {
+>>>>>>> Stashed changes
 
 export default  ({ login }) => (
   <form onSubmit={evt => {
