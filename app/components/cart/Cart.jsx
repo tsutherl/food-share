@@ -5,7 +5,6 @@ export default class Cart extends Component {
 
   componentDidMount() {
     const user = this.props.user;
-    user && this.props.onLoadItems(user.id);
 
 
   }
@@ -14,7 +13,7 @@ export default class Cart extends Component {
     return (
       <div id="cart-container">
         <div className="main-content">
-          <h2 className="full-line">{this.props.user && this.props.user.name}'s Cart</h2>
+          <h2 className="full-line">{this.props.user.name? this.props.user.name + "'s Cart" : 'Your Cart'}</h2>
           <table className="table">
             <thead>
               <tr>
@@ -33,7 +32,7 @@ export default class Cart extends Component {
             <tr className="cart-list" key={idx}>
               <td>
                 <Link to={"/stickers/" + item.product.id}>
-                  <img src={item.product.picture} className="cart-pic" /> 
+                  <img src={item.product.picture} className="cart-pic" />
                 </Link>
               </td>
               <td className="cart-item">{item.product.name}</td>
@@ -45,7 +44,7 @@ export default class Cart extends Component {
                   className= "btn-cart-remove">
                   <img src ="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_12-512.png" />
                 </button>
-              </td> 
+              </td>
             </tr>
             ))
           }

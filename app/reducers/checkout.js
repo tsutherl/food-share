@@ -35,14 +35,15 @@ export const messageNull = function () {
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)---------------------------//
 export const sendEmail= function (email,order,total){
-  axios.post('/api/orders/sendmail',{email,order,total})
-  .then(()=>{});
+  return function (dispatch) {
+    return axios.post('/api/orders/sendmail',{email,order,total})
+  }
 }
 //parallel ajaxs request ok?
 export const addOrderAsync = function (order, masterId, userId) {
   console.log('DA STUFF',order, masterId, userId)
   return function(dispatch) {
-    axios.put(`/api/orders/users/${userId}`)
+    return axios.put(`/api/orders/users/${userId}`)
     .then(()  => {});
 
     axios.put(`/api/orders/orderMaster/${masterId}`, order)
