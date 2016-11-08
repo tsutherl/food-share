@@ -65,7 +65,7 @@ const orders = require('express').Router()
         })
         .then(foundOrder => {
           console.log("FOUND ORDER IN CALL", foundOrder)
-          if(foundOrder === null) {
+          if(!foundOrder) {
             res.send([])
           } else {
               //security check commented out for now!  test from front end.

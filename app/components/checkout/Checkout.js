@@ -18,7 +18,7 @@ export default class Checkout extends Component {
 
   render () {
     console.log("PROPS", this.props)
-    const orderId = this.props.items[0].order_master_id
+    const orderId = this.props.items.length !== 0? this.props.items[0].order_master_id : null
     const total = this.props.items.reduce((prev, curr) => {
         return prev + (curr.product.price);
           }, 0);
