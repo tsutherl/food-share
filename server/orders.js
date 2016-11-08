@@ -56,145 +56,85 @@ const orders = require('express').Router()
         })
       }
     )
-
-    .get('/orderMaster/:masterId', function(req,res,next){
-        OrderMaster.findOne({
-          where: {id: req.params.masterId}
+    // *** GET REQUEST below IS WORKING (w/o security check though)
+    
+    .get('/users/:userId', function(req, res, next){  //get pending items (cart items) for specific user
+        OrderMaster.findOne({where:
+          {user_id: req.params.userId, completed: false}
         })
-        .then((fullOrder) => {
-          return fullOrder.getOrders()   //I think this is not working... check assoc methods
-        })
-        .then((orderItems) => {
-          res.send(orderItems)
-        })
-        .catch(next)
-    })
+        .then(foundOrder => {
+      //security check commented out for now!  test from front end.
 
-    .put('/orderMaster/:masterId', function(req, res, next){
-      OrderMaster.findById(req.params.masterId)
-      .then(fullOrder => {
-        let updatedOrder = Object.assign({completed: true}, req.body)
-        return fullOrder.update(updatedOrder)
-      })
-      .then((updatedOrder)=> res.status(201).json(updatedOrder))
-      .catch(next)
-    })
-
-    .get('/users/:userId', function(req, res, next){  //get pending items (cart items)
-        Order.findAll({
-            where: {user_id: req.params.userId,
-                    completed: false},
+      //  if (foundOrder.user_id !== req.user.id) return res.send(403)  
+      // for now, line 12 just checks whether user ID from session matches the user whose order is being sought
+      // we should add a check to let admin users access any order
+      //  else{                               
+          Order.findAll({
+            where: {order_master_id: foundOrder.id},
             include: [{model: Sticker,
                        as: 'product'}]
             })
-        .then(items => res.send(items))
-        .catch(next)
-    })
-    .get('/:orderId/:userId', (req, res, next) =>
-        Order.findAll({where: {
-            orderNumber: req.params.orderId
-                }
-            })
-            .then(items =>
-                res.send(items)
-            )
-            .catch(next))
-
-    .post('/users/:userId/:productId', function(req, res, next){
-        Order.findAll({
-            where: {
-                user_id: req.params.userId,
-                completed: false
-            }
-        })
-        .then(function(items){
-          req.body.user_id = req.params.userId;
-          req.body.product_id = req.params.productId;
-            if (items.length) {
-              req.body.orderNumber = items[0].orderNumber;
-              req.body.order_master_id= items[0].order_master_id;
-              Order.findOne({
-                where: {
-                  user_id: req.params.userId,
-                  completed: false,
-                  product_id: req.params.productId
-                }
-              })
-              .then((item) => {
-                if (item) {
-                  item.update({quantity: item.quantity +1})
-
-                }
-                else {
-                  req.body.quantity = 1;
-                  Order.create(req.body)
-                  .then(function(item){
-                      res.status(201).json(item)
-                      }
-                    )
-                }
-             })
-               .catch(next)
-
-            }
-            //add new item to current cart
-            else {
-              OrderMaster.create({})
-                .then(fullOrder => {  
-                  let lastOrder;
-                  User.findById(req.params.userId)
-                  .then(function(user){
-                    lastOrder = user.lastCompletedOrder
-                    req.body.orderNumber = lastOrder+1;
-                    req.body.quantity = 1;
-                    req.body.order_master_id = fullOrder.id;
-                    Order.create(req.body)
-                    .then(item => res.status(201).json(item))
-                  })
-                })
-              .catch(next)
-            } //make new cart
-        })
-    })
-
-    .put('/users/:userId', function(req, res, next){
-      let currentOrder;
-      Order.findAll({where: {
-        user_id: req.params.userId,
-        completed: false
-      }})
-      .then(function(items){
-        currentOrder = items[0].orderNumber
-        Promise.all(
-        items = items.map(function(item){
-          item.update({completed: true})
-        }))
-      .then(function(items){
-        User.findById(req.params.userId)
-        .then(function(user){
-          return user.update({lastCompletedOrder: currentOrder})
-        })
-        .then(updateUser => res.status(201).json(updatedUser))
-
+        
+          .then(items => res.send(items))     
+      //  }
       })
       .catch(next)
-      })
     })
-    .delete('/users/:orderId', function(req, res, next) {
-      Order.findOne({where: {
-        id: req.params.orderId}})
-      .then(function(item){
-        if(item.quantity > 1) {
-          item.update({quantity: item.quantity - 1})
-          .then(item => res.send(204))
-        } else {
-           item.destroy()
-           .then(item => res.send(204))
-        }
+      
 
+
+
+//POST route below either finds an open order for the user in question OR creates one, in either case it 
+// pulls the orderMasterID from that order (existing or newly created), then posts a new line item to Orders
+// with the correct product ID and orderMasterID
+
+    .post('/users/:userId/:productId', function(req, res, next){      
+      OrderMaster.findOrCreate({
+        where: {user_id: req.params.userId,
+                completed: false}
       })
+      .spread((orderToChange,bool) =>{
+        Order.create({
+          product_id: req.params.productId,
+          order_master_id: orderToChange.dataValues.id
+        })
+        .then(()=>res.send(201))
+      })
+      .catch(next)
+    })
 
+    .put('/users/:userId', function(req, res, next){         //mark an order as complete (in OrderMaster)
+        OrderMaster.findOne({where:
+          {user_id: req.params.userId, completed: false}
+        })
+        .then(foundOrder => {
+      //security check commented out for now!  test from front end.
 
+      //  if (foundOrder.user_id !== req.user.id) return res.send(403)  
+      // for now, line 12 just checks whether user ID from session matches the user whose order is being sought
+      // we should add a check to let admin users access any order
+      //  else{                               
+          foundOrder.update({completed: true}) 
+          .then(res.sendStatus(201))    
+      //  }
+      })
+      .catch(next)
+    })
+
+//DELETE route deletes the first item in Orders that matches the orderMasterId and productID
+
+    .delete('/users/:userId/:productId', function(req, res, next){
+      OrderMaster.findOne({where:
+          {user_id: req.params.userId, completed: false}
+        })
+      .then(foundOrder =>{
+        Order.findOne({where: 
+          {product_id: req.params.productId}
+        })
+        .then(orderItem => orderItem.destroy())
+        .then(()=> res.sendStatus(204))
+      })
+      .catch(next)
     })
 
 

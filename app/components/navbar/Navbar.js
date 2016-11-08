@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router'
 
-export default ({auth, logout}) => {
+export default ({auth, logout, items}) => {
+  console.log(items);
     return (
         <nav className="navbar navbar-default">
           <div className="container-fluid">
@@ -13,7 +14,7 @@ export default ({auth, logout}) => {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">StickYoSelf</a>
+              <Link to="/home" className="navbar-brand" href="#">StickYoSelf</Link>
             </div>
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -9,11 +9,21 @@ const Sticker = require('./sticker');
 const Order = require('./order');
 const OrderMaster = require('./orderMaster');
 
-Order.belongsTo(User);
+//Order model is line items for each sticker ordered, ever
+
+// OrderMaster model keeps track of orders as groups of items per user
+
+//Order.belongsTo(User);   // may be able to delete this
+
+
 
 Order.belongsTo(Sticker, {as: 'product'});
 
 Order.belongsTo(OrderMaster);
+
+OrderMaster.belongsTo(User);
+
+//User.hasMany(OrderMaster);
 
 OrderMaster.hasMany(Order);
 

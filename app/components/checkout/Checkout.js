@@ -18,7 +18,7 @@ export default class Checkout extends Component {
   render () {
     const orderId = this.props.items[0].order_master_id
     const total = this.props.items.reduce((prev, curr) => {
-        return prev + (curr.quantity * curr.product.price);
+        return prev + (curr.product.price);
           }, 0);
     return (
       <div className='center_div container '>

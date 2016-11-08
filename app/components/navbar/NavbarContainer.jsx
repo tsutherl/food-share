@@ -3,6 +3,6 @@ import Navbar from './Navbar'
 import {logout} from 'APP/app/reducers/auth'
 
 export default connect(
-    ({auth}) => ({auth}),
+    ({auth, items}) => ({auth, items}),
     {logout})
 (Navbar)
