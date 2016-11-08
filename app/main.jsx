@@ -16,7 +16,7 @@ import App from './components/App'
 import WhoAmI from './components/WhoAmI'
 import CartContainer from './components/cart/CartContainer'
 import UserOrdersContainer from './components/user/UserOrdersContainer'
-
+import CheckoutContainer from './components/checkout/CheckoutContainer'
 
 
  
@@ -55,6 +55,7 @@ render (
               <Route path='home' component={HomeContainer} />
               <Route path='login' component={LoginContainer}/>
               <Route path='cart' component={CartContainer} onEnter={fetchCart} />
+              <Route path='checkout' component={CheckoutContainer} />
               <Route path='user' component={UserContainer}/>
               <Route path='user/orders' component={UserOrdersContainer}/>
               <Route path='stickers' component={StickersContainer}/>

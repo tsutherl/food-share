@@ -4,12 +4,12 @@ const Sequelize = require('sequelize')
 const Sticker = require('./sticker');
 
 module.exports = db.define('orders', {
-  quantity: Sequelize.INTEGER,
-  orderNumber: Sequelize.INTEGER,
-  completed: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
-  }
+ // quantity: Sequelize.INTEGER,
+ // orderNumber: Sequelize.INTEGER,  // CAN DELETE THIS once OrderMaster belongsTO user is implemented
+  // completed: {
+  //   type: Sequelize.BOOLEAN,
+  //   defaultValue: false
+  // }
 },
 
 {

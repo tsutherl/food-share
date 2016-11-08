@@ -21,8 +21,8 @@ export default class Cart extends Component {
                 <th className="cart-table-hdg"></th>
                 <th className="cart-table-hdg">swish</th>
                 <th className="cart-table-hdg">price</th>
-                <th className="cart-table-hdg">qty</th>
-                <th className="cart-table-hdg">total price</th> 
+               {/* } <th className="cart-table-hdg">qty</th>
+                <th className="cart-table-hdg">total price</th> */}
                 <th></th>
               </tr>
             </thead>
@@ -38,10 +38,10 @@ export default class Cart extends Component {
               </td>
               <td className="cart-item">{item.product.name}</td>
               <td className="cart-item">{item.product.price}</td>
-              <td className="cart-item">{item.quantity}</td>
-              <td className="cart-item">{item.quantity * item.product.price}</td>
+              {/* <td className="cart-item">{item.quantity}</td>
+              <td className="cart-item">{item.quantity * item.product.price}</td> */}
               <td>
-                <button onClick = {() => this.props.deleteItem(item.id, item.user_id)}
+                <button onClick = {() => this.props.deleteItem(item.product.id, this.props.user.id)}
                   className= "btn-cart-remove">
                   <img src ="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_12-512.png" />
                 </button>
@@ -51,6 +51,7 @@ export default class Cart extends Component {
           }
           </tbody>
         </table>
+        <Link to="/checkout"><button type="button" className="btn btn-success">Checkout</button></Link>
         </div>
       </div>
     );

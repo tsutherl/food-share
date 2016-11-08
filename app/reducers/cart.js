@@ -11,7 +11,6 @@ export function cartReducer (state = [], action) {
 
 //-------------------------ACTION TYPES-----------------------------//
 export const GET_CART_ITEMS = 'GET_CART_ITEMS';
-export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
 
 
 //-------------------------ACTION CREATORS-----------------------------//
@@ -24,8 +23,9 @@ const loadItems = function (items) {
 };
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)---------------------------//
-export const loadItemsAsync = function (userId) {
-  return function (dispatch) {
+export const loadItemsAsync = function (userId) {    //now finding by orderMasterId instead of user id
+  return function (dispatch) { 
+
     fetch('/api/orders/users/' + userId)
       .then(res => res.json())
       .then(items => {
@@ -35,9 +35,11 @@ export const loadItemsAsync = function (userId) {
   };
 };
 
-export const deleteFromCart = function(orderId, userId) {
+
+
+export const deleteFromCart = function(productId, userId) {
   return function(dispatch) {
-    axios.delete('/api/orders/users/' + orderId)
+    axios.delete('/api/orders/users/' + userId + '/' + productId)
     // .then(res => res.json())
     .then(items => {
       dispatch(loadItemsAsync(userId))
