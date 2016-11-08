@@ -24,9 +24,12 @@ export default class Checkout extends Component {
       <div className='center_div container '>
         <form onSubmit={(evt)=> {
           evt.preventDefault()
-          console.log(total)
+          console.log(this.props.items)
           const orderInfo = Object.assign({}, this.state, {purchaserEmail: this.props.auth.email, total: total})
-          this.props.placeOrder(orderInfo, orderId, this.props.auth.id)}}>
+          this.props.sendEmail(this.state.sendToEmail,this.props.items, total)
+          this.props.placeOrder(orderInfo, orderId, this.props.auth.id)
+
+        }}>
           <div className="form-group">
             <label>Email My Swish To:</label>
             <input onChange={this.updateSendToEmail}type="email" className="form-control" placeholder="Email"/>

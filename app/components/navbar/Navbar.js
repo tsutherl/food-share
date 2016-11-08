@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router'
 
-export default ({auth, logout}) => {
+export default ({auth, logout, items}) => {
+  console.log(items);
     return (
         <nav className="navbar navbar-default">
           <div className="container-fluid">
