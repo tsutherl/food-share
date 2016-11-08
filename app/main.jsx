@@ -19,8 +19,8 @@ import UserOrdersContainer from './components/user/UserOrdersContainer'
 import CheckoutContainer from './components/checkout/CheckoutContainer'
 
 
- 
-    
+
+
 const fetchCart = (nextState, _replace, done) => {
   store.dispatch(whoami())
     .then(auth => {
@@ -52,7 +52,7 @@ render (
 
         <Route path='/' component={App}>
             <IndexRedirect to='home'/>
-              <Route path='home' component={HomeContainer} />
+              <Route path='home' component={HomeContainer} onEnter={fetchCart}/>
               <Route path='login' component={LoginContainer}/>
               <Route path='cart' component={CartContainer} onEnter={fetchCart} />
               <Route path='checkout' component={CheckoutContainer} />
