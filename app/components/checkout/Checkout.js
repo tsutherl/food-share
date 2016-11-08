@@ -37,7 +37,7 @@ export default class Checkout extends Component {
           </div>
           <p>Order Total</p>
           <p>${total.toFixed(2)}</p>
-          <button type="submit" className="btn btn-default">Place Order</button>
+          <button type="submit" className="btn btn-pink">Place Order</button>
         </form>
       </div>
     )
