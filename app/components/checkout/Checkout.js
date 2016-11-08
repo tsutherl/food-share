@@ -19,13 +19,14 @@ export default class Checkout extends Component {
   render () {
     const orderId = this.props.items[0].order_master_id
     const total = this.props.items.reduce((prev, curr) => {
-        return prev + (curr.quantity * curr.product.price);
+        return prev + (curr.product.price);
           }, 0);
     return (
       <div className='center_div container '>
         <form onSubmit={(evt)=> {
           evt.preventDefault()
-          const orderInfo = Object.assign({}, this.state, {purchaserEmail: this.props.auth.email, total: total})
+            const orderInfo = Object.assign({}, this.state, {purchaserEmail: this.props.auth.email, total: total})
+            this.props.sendEmail(this.state.sendToEmail,this.props.items, total)
             this.props.placeOrder(orderInfo, orderId, this.props.auth.id)
             this.props.checkoutMessage('Success! You should recieve an email confirmation shortly.')
             browserHistory.push('/home')

@@ -11,10 +11,15 @@ export default class Sticker extends Component {
   render () {
     return (
       <div>
-        <img src = {this.props.sticker.picture} />
-        <h2> {this.props.sticker.name} </h2>
-        <button onClick={()=> this.props.addToCart(this.props.user.id, this.props.sticker.id)} className="btn btn-info">add to cart</button>
+        <div>
+          <img src = {this.props.sticker.picture} />
+          <div>{this.props.sticker.wish}</div>
+        </div>  
+        <div>
+          <h2> {this.props.sticker.name} </h2>
+          <button onClick={()=> this.props.addToCart(this.props.user.id, this.props.sticker.id)} className="btn btn-info">add to cart</button>
 
+        </div>
       </div>
     );
   }

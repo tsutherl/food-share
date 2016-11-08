@@ -11,5 +11,6 @@ module.exports = db.define('stickers', {
   	validate:{
   		isURL: true
   	}
-  }
+  },
+  wish: Sequelize.TEXT
 })
