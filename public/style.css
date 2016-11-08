@@ -112,7 +112,7 @@ a h5 {
 }
 
 .home-cover {
-  height:1000px;
+  height:1200px;
   color:white;
   background: url('https://i.ytimg.com/vi/4TOvd8L1UWs/maxresdefault.jpg') no-repeat center center fixed;
   background-size:cover;
@@ -153,7 +153,9 @@ hr.signup {
 h3 {
   clear: both;
 }
-
+nav li:hover{
+  color:red;
+}
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
