@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router'
 
 export default ({auth, logout, items}) => {
-  console.log(items);
+  console.log("IIITTTEEEMMMSSS", items.length);
     return (
         <nav className="navbar navbar-default">
           <div className="container-fluid">
@@ -23,7 +23,7 @@ export default ({auth, logout, items}) => {
                 <li><Link to="/stickers">{`Swishes`}</Link></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                <li><Link to="/cart"><img src="http://www.inmotionhosting.com/support/images/stories/icons/ecommerce/empty-cart-dark.png" height="23" width="23"/> </Link></li>
+                <li><Link to="/cart"><img src="http://www.inmotionhosting.com/support/images/stories/icons/ecommerce/empty-cart-dark.png" height="23" width="23"/> {(items.length>=1)? <span className="badge">{items.length}</span>: ""} </Link></li>
                 <li><Link to={auth? `/user` : `/login`}>{auth? `Hello, ${auth.name}` : `Login/SignUp`}</Link></li>
                 <li><Link to="/home"><button onClick={logout} type="button" className="btn btn-success">Logout</button></Link></li>
                 </ul>

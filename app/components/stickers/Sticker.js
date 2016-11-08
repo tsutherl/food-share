@@ -17,7 +17,7 @@ export default class Sticker extends Component {
         </div>  
         <div>
           <h2> {this.props.sticker.name} </h2>
-          <button onClick={()=> this.props.addToCart(this.props.user.id, this.props.sticker.id)} className="btn btn-info">add to cart</button>
+          <button onClick={()=> this.props.addToCart(this.props.user.id, this.props.sticker.id)} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">add to cart</button>
 
         </div>
       </div>
