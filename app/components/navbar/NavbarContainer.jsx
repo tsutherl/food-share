@@ -6,5 +6,5 @@ import { loadItemsAsync } from 'APP/app/reducers/cart'
 export default connect(
     ({auth, items}) => ({auth, items}),
     {logout}
-    )
+)
 (Navbar)

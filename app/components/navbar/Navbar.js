@@ -23,6 +23,7 @@ export default ({auth, logout, items}) => {
                 <li><Link to="/stickers">{`Swishes`}</Link></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
+
                 <li className="nav-cont"><Link to="/cart">
                   {(items.length>=1)? 
                     <div className="mdl-badge" data-badge={items.length}>
@@ -30,6 +31,7 @@ export default ({auth, logout, items}) => {
                     </div>
                   : <img className="navbar-img" src="http://cdn1.crystalcommerce.com/themes/clients/categoryonegames/assets/img/ui/icon-cart.png"/>} 
                 </Link></li>
+
                 <li><Link to={auth? `/user` : `/login`}>{auth? `Hello, ${auth.name}` : `Login/SignUp`}</Link></li>
                 <Link to="/home">
                     <form className="navbar-form navbar-right">
