@@ -10,7 +10,7 @@ export default class Stickers extends Component {
 
   render () {
     return (
-    <div>
+    <div className="container center_div text-center">
       <h3 className="title">Click on a Swish to see wish details!</h3>
       <div className="flex-container">
         {
@@ -24,7 +24,7 @@ export default class Stickers extends Component {
                   </div>
                   <div className="sticker-details">
                     <Link to={"/stickers/" + sticker.id}><h5>{ sticker.name }</h5></Link>
-                    <button onClick={()=> this.props.addToCart(this.props.user.id, sticker.id)} className="btn btn-info">add to cart</button>
+                    <button onClick={()=> this.props.addToCart(this.props.user.id, sticker.id)} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">add to cart</button>
                   </div>
               </div>
             )

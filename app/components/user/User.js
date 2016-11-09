@@ -31,7 +31,7 @@ export default class User extends Component {
 					</div>
 					<div className="well container center_div">
 						<h3> Order History </h3>
-						<Link to="/user/orders"><button type="button" className="btn btn-success">View More Orders...</button></Link>
+						<Link to="/user/orders"><button type="button" className="btn btn-pink">View More Orders...</button></Link>
 					</div>
 					<hr/>
 					<div className='center_div container'>
@@ -57,7 +57,7 @@ export default class User extends Component {
 						    <input onChange={evt => this.setState({picture: event.target.value})} type="file" className="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"/>
 						    <small id="fileHelp" className="form-text text-muted">This is some placeholder block-level help text for the above input. Its a bit lighter and easily wraps to a new line.</small>
 						  </div>
-						  <button type="submit" className="btn btn-primary">Save Changes</button>
+						  <button type="submit" className="btn btn-pink">Save Changes</button>
 						</form>
 					</div>
                 </div>

@@ -50,7 +50,7 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
 
-        <Route path='/' component={App}>
+        <Route path='/' component={App} onEnter={fetchCart}>
             <IndexRedirect to='home'/>
               <Route path='home' component={HomeContainer} />
               <Route path='login' component={LoginContainer}/>

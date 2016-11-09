@@ -26,7 +26,7 @@ export default class Login extends Component {
 			    <input name="password" type="password" placeholder="Password"/>
 			    <br/>
 			    <br/>
-			    <input type="submit" value="Login" />
+			    <button type="submit" className="btn btn-pink" value="Login"> Login </button>
 			  </form>
 			  <hr className="signup"/>
 			  <h3>Or Signup</h3>
@@ -47,7 +47,7 @@ export default class Login extends Component {
 			    <input name="password" type="password" placeholder="password"/>
 			    <br/>
 			    <br/>
-			    <input type="submit" value="Signup" />
+			    <button type="submit" className="btn btn-pink" value="Signup"> Signup </button>
 			  </form>
 			  </div>
 			)

@@ -2,9 +2,9 @@ import React from 'react'
 import {Link} from 'react-router'
 
 export default ({auth, logout, items}) => {
-  console.log("IIITTTEEEMMMSSS", items.length);
+
     return (
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default">                                                   
           <div className="container-fluid">
 
             <div className="navbar-header">
@@ -19,14 +19,27 @@ export default ({auth, logout, items}) => {
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li className="active"><Link to="/home">Home</Link></li>
+                <li className=""><Link to="/home">Home</Link></li>
                 <li><Link to="/stickers">{`Swishes`}</Link></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                <li><Link to="/cart"><img src="http://www.inmotionhosting.com/support/images/stories/icons/ecommerce/empty-cart-dark.png" height="23" width="23"/> {(items.length>=1)? <span className="badge">{items.length}</span>: ""} </Link></li>
+
+                <li className="nav-cont"><Link to="/cart">
+                  {(items.length>=1)? 
+                    <div className="mdl-badge" data-badge={items.length}>
+                      <img className="navbar-img" src="http://cdn1.crystalcommerce.com/themes/clients/categoryonegames/assets/img/ui/icon-cart.png"/>
+                    </div>
+                  : <img className="navbar-img" src="http://cdn1.crystalcommerce.com/themes/clients/categoryonegames/assets/img/ui/icon-cart.png"/>} 
+                </Link></li>
+
                 <li><Link to={auth? `/user` : `/login`}>{auth? `Hello, ${auth.name}` : `Login/SignUp`}</Link></li>
-                <li><Link to="/home"><button onClick={logout} type="button" className="btn btn-success">Logout</button></Link></li>
-                </ul>
+                <Link to="/home">
+                    <form className="navbar-form navbar-right">
+                            <button onClick={logout} type="button" className="btn btn-pink">Logout</button>
+                    </form>
+                </Link>
+              </ul>
+              
             </div>
           </div>
         </nav>

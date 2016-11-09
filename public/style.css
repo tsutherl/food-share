@@ -1,3 +1,7 @@
+#main, h1, h3, h2, h4, a>h5, h3.title{
+  font-family: 'Coiny', cursive !important;
+}
+
 h3.title {
   margin: 3%;
 }
@@ -11,7 +15,7 @@ h3.title {
 
 .sticker-div {
   width: 200px;
-  height: 290px;
+  height: 400px;
   margin: 3%;
 }
 
@@ -35,10 +39,10 @@ h3.title {
 
 a h5 {
   text-align: center;
-  height: 30px;
+  height: 70px;
 }
 
-.btn.btn-info {
+.mdl-button.mdl-js-button {
   width: 90%;
   display: inline;
   margin: 0 auto;
@@ -112,34 +116,47 @@ a h5 {
 }
 
 .home-cover {
-  height:1000px;
+  height:1200px;
   color:white;
   background: url('https://i.ytimg.com/vi/4TOvd8L1UWs/maxresdefault.jpg') no-repeat center center fixed;
   background-size:cover;
 }
-
-.navbar-nav li a {
-  line-height: 32px;
+.navbar-img {
+  height:20px;
+  width:20px;
+  display:block;
+}
+.navbar-default {
+  background-color: black;
+  border: none;
+  border-radius: 0px;
 }
 
-a.navbar-brand {
-  line-height: 32px;
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>.active>a:hover {
+  color: rgb(255,64,129);
 }
 
-.navbar-brand, .navbar-nav {
-  height: 64px;
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>.active>a:focus {
+  color: white;
+  background-color:rgb(255,64,129);
 }
 
-.navbar ul li a {
-  height: 64px;
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a {
+  color: white
 }
-
+.navbar-default .navbar-nav>.active>a{
+  background-color: rgb(255,64,129);
+}
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
 
   display: flex;
   align-items: center;
+}
+
+.navbar-default .navbar-brand, html{
+  color:white;
 }
 
 .login-signup {
@@ -153,6 +170,16 @@ hr.signup {
 h3 {
   clear: both;
 }
+.btn-pink{
+  color:white;
+  background-color: rgb(255,64,129);
+}
+.pink{
+  color:rgb(255,64,12);
+}
+
+
+
 
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
