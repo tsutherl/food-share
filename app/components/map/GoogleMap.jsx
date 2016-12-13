@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import store from 'APP/app/store'
-import {mapStyle} from './mapstyle.js'
+import {mapStyle} from 'APP/utils/mapstyle.js'
 
 export default class GoogleMap extends Component {
   constructor(props){
     super(props)
     this.initMap = this.initMap.bind(this)
+    this.state = {
+      user: {
+        lat: 40.704581,
+        lng: -74.010273
+      },
+      offerings = []
+    }
   }
 
   componentDidMount(){
-    initMap(this.props.current, this.props.locations)
+    initMap(this.state.user, this.state.offerings)
   }
 
   render() {
@@ -20,10 +27,10 @@ export default class GoogleMap extends Component {
     )
   }
 
-  initMap(current, locations){
-
+  initMap(user, locations){
     //sets user's map to center on their own location
-    var center = {lat: current.lat, lng: current.lng}
+    //this is tentative based on data structure of db
+    var center = new google.maps.LatLng(user.location.lat, user.location.lng);
 
     //creates map based on center, zoom, styles
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -41,7 +48,7 @@ export default class GoogleMap extends Component {
 
     // create markers based on location array
     locations.forEach(location => {
-      var latLng = new google.maps.LatLng(location.lat, location.lng)
+      var latLng = new google.maps.LatLng(offering.location.lat, offering.location.lng)
       var options = {
         //animation,
         //icon,
