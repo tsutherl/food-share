@@ -4,7 +4,6 @@ const foodProviders = require('express').Router()
   .get('/', function(req, res, next){  //get pending items (cart items) for specific user
     FoodProviders.findAll()
         .then(foodProviders => {
-          console.log("FOUND OFFER IN CALL", foodProviders)
           if(!foodProviders) {
             res.send([])
           }
