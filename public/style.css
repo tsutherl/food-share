@@ -115,11 +115,11 @@ a h5 {
   margin-bottom: 0px;
 }
 
-.home-cover {
+/*.home-cover {
   background: url("fresh-bread.jpg");
   background-size: 80px 60px;
   background-repeat: no-repeat;
-}
+}*/
 .navbar-img {
   height:20px;
   width:20px;
@@ -176,6 +176,12 @@ h3 {
 .pink{
   color:rgb(255,64,12);
 }
+
+.controls {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
 
 
 

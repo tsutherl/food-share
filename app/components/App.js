@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from './navbar/NavbarContainer'
+import Controls from './controls/Controls'
 
 
 export default ({children}) => {
     return (
           <div>
-            <Navbar />
+            <Controls />
             {children}
           </div>
     )                                                                     
