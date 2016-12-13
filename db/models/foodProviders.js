@@ -4,7 +4,8 @@ const geocode = require( '../../utils/geocode');
 const Sequelize = require('sequelize');
 const db = require('APP/db');
 
-const foodProviders = db.define('foodProvider', {
+
+const FoodProviders = db.define('foodProviders', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
@@ -42,5 +43,4 @@ foodProviders.hook('beforeUpdate', function (foodProviders) {
     }
 });
 
-
-module.exports = foodProviders;
+module.exports =  FoodProviders
