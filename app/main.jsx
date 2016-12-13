@@ -9,11 +9,13 @@ import {whoami} from './reducers/auth'
 import store from './store'
 import HomeContainer from './components/home/HomeContainer'
 import UserContainer from './components/user/UserContainer'
+
 import LoginContainer from './components/login/LoginContainer'
 import App from './components/App'
 import WhoAmI from './components/WhoAmI'
 import UserOrdersContainer from './components/user/UserOrdersContainer'
 
+import OfferingContainer from './components/offering/OfferingContainer'
 
 
 
@@ -41,6 +43,8 @@ render (
             <IndexRedirect to='home'/>
               <Route path='home' component={HomeContainer} />
               <Route path='login' component={LoginContainer}/>
+              <Route path='offerings' component={OfferingContainer}/>
+
               <Route path='user' component={UserContainer}/>
               <Route path='user/orders' component={UserOrdersContainer}/>
         </Route>
