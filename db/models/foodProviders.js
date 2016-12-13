@@ -36,11 +36,11 @@ const FoodProviders = db.define('foodProviders', {
   }
 });
 
-foodProviders.hook('beforeUpdate', function (foodProviders) {
-    if (!foodProviders.location) {
-      let addressString = foodProviders.address + ', ' + foodProviders.city + ', ' + foodProviders.state;
-      foodProviders.location = geocode(addressString);
-    }
-});
+// foodProviders.hook('beforeUpdate', function (foodProviders) {
+//     if (!foodProviders.location) {
+//       let addressString = foodProviders.address + ', ' + foodProviders.city + ', ' + foodProviders.state;
+//       foodProviders.location = geocode(addressString);
+//     }
+// });
 
 module.exports =  FoodProviders
