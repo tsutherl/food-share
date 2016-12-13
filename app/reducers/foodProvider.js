@@ -18,15 +18,15 @@ export const fetchAllProvidersAction = () => {
       .catch(err => console.error(err));
   }
 
-// export const postNewProviderAction = (newProvider) => {
-//   return dispatch => {
-//     axios.post('/api/offerings', newProvider)
-//     .then(function(result) {
-//       dispatch(postNewProvider(result.data))
-//     })
-//     .catch(err => console.error(err));
-//   }
-// }
+export const postNewProviderAction = (newProvider) => {
+  return dispatch => {
+    axios.post('/api/offerings', newProvider)
+    .then(function(result) {
+      dispatch(postNewProvider(result.data))
+    })
+    .catch(err => console.error(err));
+  }
+}
 //-------------------------REDUCER-----------------------------//
 const initialState = [
   {name: 'Bouley', address: '75 Wall St', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.705137, -74.013940], type: 'restaurant'},
@@ -43,8 +43,8 @@ const providersReducer = function(state = initialState, action) {
   switch(action.type) {
   	case GET_ALL_PROVIDERS :
       return action.providers
-    // case POST_PROVIDER :
-    //   return [...state, action.newProvider ]
+    case POST_PROVIDER :
+      return [...state, action.newProvider ]
     default: 
     	return state
   }
