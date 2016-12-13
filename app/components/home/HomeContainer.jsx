@@ -1,13 +1,11 @@
 import {connect} from 'react-redux'
 import Home from './Home'
-import {messageNull} from 'APP/app/reducers/checkout'
+import {showAbout} from 'APP/app/reducers/about'
 
-const mapStateToProps = function(state) {
-  return {
-    message: state.message
-  };
+const mapStateToProps = ({showAbout}) => ({ 
+    showAbout
+  });
 
-};
 
 const mapDispatchToProps= function (dispatch) {
   return {
