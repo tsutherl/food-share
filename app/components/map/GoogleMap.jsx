@@ -35,7 +35,6 @@ export default class GoogleMap extends Component {
     axios.get('/foodProviders')
     .then(response => {
       console.log('getting locations', response.data)
-      console.log('res.json', response.json())
       this.initMap(this.state.user, response.data)
     })
   }
@@ -48,7 +47,7 @@ export default class GoogleMap extends Component {
     //creates map based on center, zoom, styles
     var map = new google.maps.Map(document.getElementById('map'), {
       center: center,
-      zoom: 9,
+      zoom: 14,
       styles: mapStyle,
       scrollwheel: false
     });
