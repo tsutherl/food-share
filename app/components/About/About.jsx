@@ -1,31 +1,105 @@
-export default class Home extends Component {
-  render() {
-    let aboutMessage = 'Up to 40% of food in the U.S. is completely wasted, at a cost of $165 billion each year. To help resolve the issue restaurants, hotels, and grocery stores need an easy method for seamlessly transfering food to hunger charities.'
-    }
-    return (
-     <div className="home-cover">
-      <a name="about"></a>
-        <div className="intro-header">
-            <div className="container">
-                <div className="row text-center vertical-center">
-                    <div className="col-lg-12">
-                        <div className="intro-message">
-                            <h1 className='center-block'>FoodShare</h1>
-                            <h3>Eliminating Food Waste</h3>
-                            <hr className="intro-divider"/>
-                            <ul className="list-inline intro-social-buttons">
-                                <span>{aboutMessage}</span>
-                            </ul>
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import store from 'APP/app/store'
+// import { toggleInstructionsPage } from 'APP/app/reducers/timelineReducer';
+
+export class About extends Component {
+    constructor () {
+        super()
+        // this.state = {
+        //  open: false
+        // }
+    };
+    // for use with some button in controls to re-open  instruction
+    // toggle = () => {
+    //   this.setState({open: !this.state.open});
+    // };
+
+    render () {
+        return (
+            <div>
+                <div id='about'>
+           <div id='close-btn-container'>
+                        
+                    </div>
+                    <p className='top' id="top">
+                    </p>
+                    <h3>instructions</h3>
+                    <h4>how to make a pattern</h4>
+                    <p>press esc to exit out of edit mode</p>
+            <div className="col-md-3 col-xs-4 instruction-div">
+                        <div>
+                        <p>add sample: click on left panel and select</p>
+                        <br>
+                        </br>
+                        </div>
+                        <div>
+                        <video name="VideoName" src="/videos/add.mov" preload="true" autoPlay="true" loop="true" width="100%" height="100%">
+                        </video>
                         </div>
                     </div>
+                    <div className="col-md-3 col-xs-4 instruction-div">
+                        <div>
+                        <p>delete: two finger click</p>
+                        <br></br>
+                        </div>
+                        <div>
+                        <video name="VideoName" src="/videos/delete.mov" preload="true" autoPlay="true" width="100%" height="100%" loop="true">
+                        </video>
+                        </div>
+                    </div>
+                    <div className="col-md-3 col-xs-4 instruction-div">
+                        <div>
+                        <p>add filter on sample: click on right panel</p>
+                        <br>
+                        </br>
+                        </div>
+                        <div>
+                        <video name="VideoName" src="/videos/filter.mov" preload="true" autoPlay="true" width="100%" height="100%" loop="true">
+                        </video>
+                        </div>
+                    </div>
+                    <div className="col-md-3 col-xs-4 instruction-div">
+                        <div>
+                        <p>drag and drop: ⇧ + click</p>
+                        <br>
+                        </br>
+                        </div>
+                        <div>
+                        <video name="VideoName" src="/videos/dragdrop.mov" preload="true" autoPlay="true" width="100%" height="100%" loop="true">
+                        </video>
+                        </div>
+                    </div>
+                    <div className="col-md-3 col-xs-4 instruction-div">
+                        <div>
+                        <p>orbit control: ⌥ + click + drag</p>
+                        <br></br>
+                        </div>
+                        <div>
+                        <video name="VideoName" src="/videos/orbit.mov" preload="true" autoPlay="true" loop="true" width="100%" height="100%">
+                        </video>
+                        </div>
+                    </div>
+                    <div className="col-md-3 col-xs-4 instruction-div">
+                        <div>
+                        <p>zoom: pinch, pan: two fingers</p>
+                        <br>
+                        </br>
+                        </div>
+                        <div>
+                        <video name="VideoName" src="/videos/zoom.mov" preload="true" autoPlay="true" loop="true" width="100%" height="100%">
+                        </video>
+                        </div>
+           </div>
                 </div>
-
-
-            </div>
+            
         </div>
-      </div>
-    )
-  }
+        )
+    }
 }
+const mapStateToProps = ({instructionsPage}) => ({instructionsPage})
 
-
+export default connect(
+    mapStateToProps,
+    null
+)(About)
