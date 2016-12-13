@@ -66,7 +66,7 @@ export default class GoogleMap extends Component {
         //icon,
         position: latLng,
         map: map,
-        label: index+1
+        label: `${index+1}`
       }
       var marker = new google.maps.Marker(options);
     })
