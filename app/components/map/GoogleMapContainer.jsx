@@ -3,15 +3,13 @@ import GoogleMap from './GoogleMap'
 
 const mapStateToProps = function(state) {
   return {
-    current: state.current,
-    locations: state.locations
+    user: state.user,
   };
 };
 
 const mapDispatchToProps= function (dispatch) {
   return null
-  };
-};
+}
 
 export default connect(
       mapStateToProps,
