@@ -4,7 +4,7 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 
-const offering = db.define('offering', {
+const Offering = db.define('offerings', {
   // Other optional fields size/contents
   //--> foodProviders ID, belongs to later
   // postingDate--getter virtual date_created of the instance of the model
@@ -28,4 +28,4 @@ const offering = db.define('offering', {
 })
 
 
-module.exports = Review
+module.exports = Offering
