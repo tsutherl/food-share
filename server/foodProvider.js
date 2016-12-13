@@ -16,7 +16,7 @@ foodProviders.get('/', function(req, res, next){  //get pending items (cart item
         .catch(next)
 })
 
-app.post('/foodProviders', function(req, res, next){  
+foodProviders.post('/foodProviders', function(req, res, next){  
     FoodProviders.create(req.body)
         .then(()=>res.send(201))
       })
