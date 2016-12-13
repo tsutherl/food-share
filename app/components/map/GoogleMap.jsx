@@ -7,6 +7,8 @@ export default class GoogleMap extends Component {
   constructor(props){
     super(props)
     this.initMap = this.initMap.bind(this)
+
+    //dummy data
     this.state = {
       user: {
         lat: 40.704581,
