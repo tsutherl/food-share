@@ -3,30 +3,30 @@ import axios from 'axios'
 
 //-------------------------ACTION TYPES-----------------------------//
 const GET_ALL_PROVIDERS = 'GET_ALL_PROVIDERS';
-//const POST_PROVIDER = 'POST_PROVIDER';
+const POST_PROVIDER = 'POST_PROVIDER';
 
 //-------------------------ACTION CREATORS-----------------------------//
 const fetchAllProviders = (providers) => ({ type: GET_ALL_PROVIDERS, providers });
-//const postNewProvider = (newProvider) => ({ type: POST_PROVIDER, newProvider });
+const postNewProvider = (newProvider) => ({ type: POST_PROVIDER, newProvider });
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)-----------------------------//
 export const fetchAllProvidersAction = () => {
   return dispatch =>
-    fetch(`/api/offerings/`) //not specific to a food provider
+    fetch(`/api/foodProviders/`) //not specific to a food provider
       .then(res => res.json())
       .then(providers => dispatch(fetchAllProviders(providers)) )
       .catch(err => console.error(err));
   }
 
-// export const postNewProviderAction = (newProvider) => {
-//   return dispatch => {
-//     axios.post('/api/offerings', newProvider)
-//     .then(function(result) {
-//       dispatch(postNewProvider(result.data))
-//     })
-//     .catch(err => console.error(err));
-//   }
-// }
+export const postNewProviderAction = (newProvider) => {
+  return dispatch => {
+    axios.post('/api/foodProviders', newProvider)
+    .then(function(result) {
+      dispatch(postNewProvider(result.data))
+    })
+    .catch(err => console.error(err));
+  }
+}
 //-------------------------REDUCER-----------------------------//
 const initialState = [
   {name: 'Bouley', address: '75 Wall St', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.705137, -74.013940], type: 'restaurant'},
@@ -43,9 +43,9 @@ const providersReducer = function(state = initialState, action) {
   switch(action.type) {
   	case GET_ALL_PROVIDERS :
       return action.providers
-    // case POST_PROVIDER :
-    //   return [...state, action.newProvider ]
-    default: 
+    case POST_PROVIDER :
+      return [...state, action.newProvider ]
+    default:
     	return state
   }
 };
