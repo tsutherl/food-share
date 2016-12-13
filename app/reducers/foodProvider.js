@@ -45,7 +45,7 @@ const providersReducer = function(state = initialState, action) {
       return action.providers
     case POST_PROVIDER :
       return [...state, action.newProvider ]
-    default: 
+    default:
     	return state
   }
 };

@@ -1,20 +1,20 @@
-const FoodProviders = require('APP/db/foodProviders/');
 
-const app = require('express').Router()
+const FoodProviders = require('APP/db/models/foodProviders');
+const foodProviders = require('express').Router()
 
-app.get('/foodProviders', function(req, res, next){  
+foodProviders.get('/', function(req, res, next){  //get pending items (cart items) for specific user
+
     FoodProviders.findAll()
         .then(foodProviders => {
           console.log("FOUND OFFER IN CALL", foodProviders)
           if(!foodProviders) {
             res.send([])
-          })
-          .then(items => res.send(items))
           }
-
-      })
-      .catch(next)
-    })
+          return foodProviders
+        })
+        .then(items => res.send(items))
+        .catch(next)
+})
 
 app.post('/foodProviders', function(req, res, next){  
     FoodProviders.create(req.body)

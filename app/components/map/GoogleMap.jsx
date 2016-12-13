@@ -32,11 +32,11 @@ export default class GoogleMap extends Component {
 
   // make this sockety in the future
   getLocations(){
-    // axios.get('api/offerings')
-    // .then(response => {
-      console.log('getting locations')
-      this.initMap(this.state.user, this.state.offerings)
-    // })
+    axios.get('/foodProviders')
+    .then(response => {
+      console.log('getting locations', response.data)
+      this.initMap(this.state.user, response.data)
+    })
   }
   initMap(user, offerings){
     //sets user's map to center on their own location
@@ -47,7 +47,7 @@ export default class GoogleMap extends Component {
     //creates map based on center, zoom, styles
     var map = new google.maps.Map(document.getElementById('map'), {
       center: center,
-      zoom: 9,
+      zoom: 14,
       styles: mapStyle,
       scrollwheel: false
     });
@@ -70,6 +70,6 @@ export default class GoogleMap extends Component {
       }
       var marker = new google.maps.Marker(options);
     })
-    
+
   }
 }
