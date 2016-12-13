@@ -43,7 +43,7 @@ export default class GoogleMap extends Component {
     //this is tentative based on data structure of db
     console.log('initializing map')
     var center = new google.maps.LatLng(user.location[0], user.location[1]);
-
+    var geocoder = new google.maps.Geocoder();
     //creates map based on center, zoom, styles
     var map = new google.maps.Map(document.getElementById('map'), {
       center: center,
@@ -70,5 +70,6 @@ export default class GoogleMap extends Component {
       }
       var marker = new google.maps.Marker(options);
     })
+    
   }
 }
