@@ -1,6 +1,5 @@
 // Geocoder takes an address from an input and returns location info
 // lat-long object can be retrieved from results[0].geometry.location
-
 var geocoder = new google.maps.Geocoder();
 
 function codeAddress(address) {
@@ -19,5 +18,6 @@ function codeAddress(address) {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
+  //assumes this is an object { lat: FLOAT, lng: FLOAT}
   return latLng;
 }

@@ -29,3 +29,4 @@ const Offering = db.define('offerings', {
 
 
 module.exports = Offering
+
