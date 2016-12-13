@@ -16,83 +16,35 @@ export class About extends Component {
     // };
 
     render () {
+        console.log('HELLO', this.props.providers)
         return (
-            <div>
-                <div id='about'>
-           <div id='close-btn-container'>
-                        
-                    </div>
+          <div>
+            <div id='about'>
+              <div id='close-btn-container'>
+
+              </div>
                     <p className='top' id="top">
+                    <br></br>
+                    Up to 40% of food in the U.S. is completely wasted, at a cost of $165 billion each year. To help resolve the issue restaurants, hotels, and grocery stores need an easy method for seamlessly transfering food to hunger charities
                     </p>
-                    <h3>instructions</h3>
-                    <h4>how to make a pattern</h4>
-                    <p>press esc to exit out of edit mode</p>
-            <div className="col-md-3 col-xs-4 instruction-div">
-                        <div>
-                        <p>add sample: click on left panel and select</p>
-                        <br>
-                        </br>
-                        </div>
-                        <div>
-                        <video name="VideoName" src="/videos/add.mov" preload="true" autoPlay="true" loop="true" width="100%" height="100%">
-                        </video>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-xs-4 instruction-div">
-                        <div>
-                        <p>delete: two finger click</p>
-                        <br></br>
-                        </div>
-                        <div>
-                        <video name="VideoName" src="/videos/delete.mov" preload="true" autoPlay="true" width="100%" height="100%" loop="true">
-                        </video>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-xs-4 instruction-div">
-                        <div>
-                        <p>add filter on sample: click on right panel</p>
-                        <br>
-                        </br>
-                        </div>
-                        <div>
-                        <video name="VideoName" src="/videos/filter.mov" preload="true" autoPlay="true" width="100%" height="100%" loop="true">
-                        </video>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-xs-4 instruction-div">
-                        <div>
-                        <p>drag and drop: ⇧ + click</p>
-                        <br>
-                        </br>
-                        </div>
-                        <div>
-                        <video name="VideoName" src="/videos/dragdrop.mov" preload="true" autoPlay="true" width="100%" height="100%" loop="true">
-                        </video>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-xs-4 instruction-div">
-                        <div>
-                        <p>orbit control: ⌥ + click + drag</p>
-                        <br></br>
-                        </div>
-                        <div>
-                        <video name="VideoName" src="/videos/orbit.mov" preload="true" autoPlay="true" loop="true" width="100%" height="100%">
-                        </video>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-xs-4 instruction-div">
-                        <div>
-                        <p>zoom: pinch, pan: two fingers</p>
-                        <br>
-                        </br>
-                        </div>
-                        <div>
-                        <video name="VideoName" src="/videos/zoom.mov" preload="true" autoPlay="true" loop="true" width="100%" height="100%">
-                        </video>
-                        </div>
-           </div>
+                    <h3>List of Participating Restaurants</h3>
+                    <h4>Pick up some food today!</h4>
+
+                     {this.props.providers.map((vendor, idx) => (
+                           <div className="col-md-3 col-xs-4 instruction-div" key={idx}>
+                                <div>
+                                    <p>{vendor.name}</p>
+                                    <p>{vendor.phone}</p>
+                                    <br></br>
+                                </div>
+                            </div>
+                        )
+                    )}
+
+
+
                 </div>
-            
+
         </div>
         )
     }

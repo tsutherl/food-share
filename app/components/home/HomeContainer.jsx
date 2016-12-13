@@ -1,10 +1,12 @@
 import {connect} from 'react-redux'
 import Home from './Home'
-import {showAbout} from 'APP/app/reducers/about'
+// import {showAbout} from 'APP/app/reducers/about'
 
-const mapStateToProps = ({showAbout}) => ({ 
-    showAbout
+const mapStateToProps = ({showAbout, foodProviders}) => ({
+    showAbout,
+    foodProviders
   });
+
 
 
 const mapDispatchToProps= function (dispatch) {
