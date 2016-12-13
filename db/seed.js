@@ -27,6 +27,7 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user))
 //const User = db.define('users', {
 
+
     const seedOfferings = () => db.Promise.map([
   {expirationDate: '01-01-2017', isPerishable: 'true', value: '30', description:'food'},
   {expirationDate: '02-01-2017', isPerishable: 'true', value: '30', description:'food'},
@@ -34,7 +35,6 @@ const seedUsers = () => db.Promise.map([
   {expirationDate: '04-01-2017', isPerishable: 'true', value: '30', description:'food'},
   {expirationDate: '05-01-2017', isPerishable: 'true', value: '30', description:'food'}
   ], offering => db.model('offerings').create(offering));
-
 
 
 db.didSync
