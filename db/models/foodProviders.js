@@ -36,4 +36,4 @@ const FoodProviders = db.define('foodProviders', {
 })
 
 
-module.exports = FoodProviders
+module.exports =  FoodProviders
