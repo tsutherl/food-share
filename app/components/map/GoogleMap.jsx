@@ -12,10 +12,9 @@ export default class GoogleMap extends Component {
     //dummy data
     this.state = {
       user: {
-        lat: 40.704581,
-        lng: -74.010273
+        location: [40.704581, -74.010273]
       },
-      offerings = []
+      offerings : []
     }
   }
 
@@ -24,6 +23,7 @@ export default class GoogleMap extends Component {
   }
 
   render() {
+    console.log('rendering map component')
     return (
      <div id="map">
       </div>
@@ -32,15 +32,17 @@ export default class GoogleMap extends Component {
 
   // make this sockety in the future
   getLocations(){
-    axios.get('api/offerings')
-    .then(response => {
-      this.initMap(this.props.user, response)
-    })
+    // axios.get('api/offerings')
+    // .then(response => {
+      console.log('getting locations')
+      this.initMap(this.state.user, this.state.offerings)
+    // })
   }
-  initMap(user, locations){
+  initMap(user, offerings){
     //sets user's map to center on their own location
     //this is tentative based on data structure of db
-    var center = new google.maps.LatLng(user.location.lat, user.location.lng);
+    console.log('initializing map')
+    var center = new google.maps.LatLng(user.location[0], user.location[1]);
 
     //creates map based on center, zoom, styles
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -57,7 +59,7 @@ export default class GoogleMap extends Component {
        });
 
     // create markers based on location array
-    locations.forEach((location, index) => {
+    offerings.forEach((offering, index) => {
       var latLng = new google.maps.LatLng(offering.location[0], offering.location[1])
       var options = {
         //animation,

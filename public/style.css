@@ -2,6 +2,15 @@
   font-family: 'Coiny', cursive !important;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.home {
+  height: 100vh;
+  width: 100%;
+}
 h3.title {
   margin: 3%;
 }
@@ -10,31 +19,14 @@ h3.title {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-
 }
 
-.sticker-div {
-  width: 200px;
-  height: 400px;
-  margin: 3%;
-}
-
-.sticker-image {
-  width: ;
-  height:240px;
-}
-
-.sticker-image a img {
-  height: auto;      /* need to change this to allow for screen resize */
-  width: 200px;
-  display: inline;
-  margin: 0 auto;
-
-}
-
-.sticker-details {
+#map {
+  height: 100%;
   width: 100%;
-
+  left: 0;
+  position: relative;
+  top: 0;
 }
 
 a h5 {
@@ -115,12 +107,12 @@ a h5 {
   margin-bottom: 0px;
 }
 
-.home-cover {
+/*.home-cover {
   height:1200px;
   color:white;
   background: url('https://i.ytimg.com/vi/4TOvd8L1UWs/maxresdefault.jpg') no-repeat center center fixed;
   background-size:cover;
-}
+}*/
 .navbar-img {
   height:20px;
   width:20px;
@@ -183,5 +175,3 @@ h3 {
 
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
-
-
