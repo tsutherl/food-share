@@ -3,7 +3,7 @@ import axios from 'axios'
 
 //-------------------------ACTION TYPES-----------------------------//
 const GET_ALL_PROVIDERS = 'GET_ALL_PROVIDERS';
-//const POST_PROVIDER = 'POST_PROVIDER';
+const POST_PROVIDER = 'POST_PROVIDER';
 
 //-------------------------ACTION CREATORS-----------------------------//
 const fetchAllProviders = (providers) => ({ type: GET_ALL_PROVIDERS, providers });
@@ -45,7 +45,7 @@ const providersReducer = function(state = initialState, action) {
       return action.providers
     case POST_PROVIDER :
       return [...state, action.newProvider ]
-    default: 
+    default:
     	return state
   }
 };
