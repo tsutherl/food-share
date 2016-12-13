@@ -5,29 +5,23 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 const offering = db.define('offering', {
-  //date, size/contents, expiration, if perishable, value(for tax purposes)
-
+  // Other optional fields size/contents
   //--> foodProviders ID, belongs to later
-  // expirationDate and time, allowNull: true
   // postingDate--getter virtual date_created of the instance of the model
-  // isPerishable boolean, allowNull: false
-  // value .FLOAT price
-  // description type: Sequelize.TEXT,
-
 
   expirationDate: {
     type: Sequelize.DATEONLY,
-    allowNull: true
+    allowNull: true //because some items are barely perishable like cans or rice
   },
   isPerishable: {
     type: Sequelize.BOOLEAN,
     allowNull: false
   },
   value: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.FLOAT, //$ amount for tax deductions
     allowNull: false
   },
-  state: {
+  description: {
     type: Sequelize.TEXT,
     allowNull: false
   }
