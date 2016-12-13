@@ -14,13 +14,14 @@ export default ({auth, logout, items}) => {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to="/home" className="navbar-brand" href="#">StickYoSelf</Link>
+              <Link to="/home" className="navbar-brand" href="#">FoodShare</Link>
             </div>
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
                 <li className=""><Link to="/home">Home</Link></li>
-                <li><Link to="/stickers">{`Swishes`}</Link></li>
+                
+                <li><Link to="/offerings">{`Offerings Available`}</Link></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
 

@@ -1,6 +1,6 @@
 const db = require('APP/db')
 
-const foodProviders = () => db.Promise.map([
+const seedFoodProviders = () => db.Promise.map([
   {name: 'Bouley', address: '75 Wall St', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.705137, -74.013940], type: 'restaurant'},
   {name: 'Marc Forgione', address: '134 Reade St', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.716526, -74.009567], type: 'restaurant'},
   {name: 'Tamarind', address: '99 Hudson St', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.718977, -74.008929], type: 'restaurant'},
@@ -31,7 +31,8 @@ const foodProviders = () => db.Promise.map([
   {name: 'New York Marriott Downtown', address: '85 W St at Albany St', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.731131, -73.989568], type: 'hotel' },
   {name: 'Cosmopolitan Hotel', address: '95 W Broadway', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.715681, -74.008922], type: 'hotel' },
   {name: 'Club Quarters', address: '140 Washington St', city: 'New York', state: 'NY', phone: '123-456-7890', location: [40.709630, -74.013940], type: 'hotel' }
-  ], foodProvider => db.model('foodProvider').create(foodProvider));
+  ], foodProvider => db.model('foodProviders').create(foodProviders));
+//const foodProviders = db.define('foodProviders', {
 
 const seedUsers = () => db.Promise.map([
   {name: 'So Many', email: 'god@example.com', password: '1234'},
@@ -45,8 +46,9 @@ const seedUsers = () => db.Promise.map([
   {name: 'Cara Weber', email: 'cara@gmail.com', password: '1234'},
   {name: 'Ashi Krishnan', email: 'ashi@ashi.com', password: '1234'}
 ], user => db.model('users').create(user))
+//const User = db.define('users', {
 
-const seedoffering = () => db.Promise.map([
+const seedOfferings = () => db.Promise.map([
   {name: 'Save a Puppy', category: 'Animal Health and Happiness', price: '17.39', picture: 'https://ih1.redbubble.net/image.60977294.4128/sticker,375x360.u1.png',
     wish: 'Each year, millions of dogs, cats, and other animals end up in shelters in the US.  The lucky ones get adopted quickly, but many more remain in shelter care for months or years; millions are also euthanized each year. Your purchase of the "Save a Puppy" swish makes a donation to an animal care shelter where volunteers keep animals healthy and give them as much love and care as possible in an often overcrowded environment.'},
   {name: 'Rainforest', category: 'Enviornment', price: '12.99', picture: 'http://www.unixstickers.com/image/data/stickers/bower/Bower.sh.png',
@@ -73,9 +75,9 @@ db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
-  .then(seedfoodProviders)
+  .then(seedFoodProviders)
   .then(foodProviders => console.log(`Seeded ${foodProviders.length} users OK`))
-  .then(seedofferings)
+  .then(seedOfferings)
   .then(offerings => console.log(`Seeded ${offerings.length} stickers OK`))
   .catch(error => console.error(error))
   .finally(() => db.close());
