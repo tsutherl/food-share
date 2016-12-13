@@ -29,11 +29,10 @@ const foodProvider = db.define('foodProvider', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  //, location array
   location: {
-    type: Sequelize.STRING,
+    type: Sequelize.ARRAY(Sequelize.FLOAT),
     allowNull: false
-  },
+  }
 })
 
 
