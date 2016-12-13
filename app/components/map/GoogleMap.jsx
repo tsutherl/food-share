@@ -19,7 +19,7 @@ export default class GoogleMap extends Component {
   }
 
   componentDidMount(){
-    initMap(this.state.user, this.state.offerings)
+    initMap(this.props.user, this.props.offerings)
   }
 
   render() {
@@ -50,7 +50,7 @@ export default class GoogleMap extends Component {
 
     // create markers based on location array
     locations.forEach(location => {
-      var latLng = new google.maps.LatLng(offering.location.lat, offering.location.lng)
+      var latLng = new google.maps.LatLng(offering.location[0], offering.location[1])
       var options = {
         //animation,
         //icon,
