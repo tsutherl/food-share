@@ -1,6 +1,7 @@
 
 'use strict'
 
+const geocode = require( '../../utils/geocode');
 const bcrypt = require('bcrypt')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
@@ -40,7 +41,14 @@ const User = db.define('users', {
         )
     }
   }
-})
+});
+
+User.hook('beforeUpdate', function (User) {
+    if (!User.location) {
+      let addressString = User.address + ', ' + User.city + ', ' + User.state;
+      User.location = geocode(addressString);
+    }
+});
 
 function setEmailAndPassword(user) {
   user.email = user.email && user.email.toLowerCase()

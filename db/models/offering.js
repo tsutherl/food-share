@@ -1,8 +1,7 @@
 
-'use strict'
-
-const Sequelize = require('sequelize')
-const db = require('APP/db')
+'use strict';
+const Sequelize = require('sequelize');
+const db = require('APP/db');
 
 const Offering = db.define('offerings', {
   // Other optional fields size/contents
@@ -25,6 +24,8 @@ const Offering = db.define('offerings', {
     type: Sequelize.TEXT,
     allowNull: false
   }
-})
+});
+
 
 module.exports = Offering
+
