@@ -23,6 +23,10 @@ const User = db.define('users', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
+  location: {
+    type: Sequelize.ARRAY(Sequelize.FLOAT),
+    allowNull: true
+  },
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING,
 	password: Sequelize.VIRTUAL
