@@ -1,3 +1,4 @@
+
 const FoodProviders = require('APP/db/models/foodProviders');
 const foodProviders = require('express').Router()
 
@@ -14,5 +15,12 @@ foodProviders.get('/', function(req, res, next){  //get pending items (cart item
         .then(items => res.send(items))
         .catch(next)
 })
+
+app.post('/foodProviders', function(req, res, next){  
+    FoodProviders.create(req.body)
+        .then(()=>res.send(201))
+      })
+      .catch(next)
+    })
 
 module.exports = foodProviders
