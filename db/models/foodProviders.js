@@ -4,7 +4,7 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 
-const foodProviders = db.define('foodProviders', {
+const FoodProviders = db.define('foodProviders', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
@@ -36,4 +36,4 @@ const foodProviders = db.define('foodProviders', {
 })
 
 
-module.exports = foodProviders
+module.exports =  FoodProviders

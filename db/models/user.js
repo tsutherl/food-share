@@ -55,4 +55,59 @@ function setEmailAndPassword(user) {
   )
 }
 
-module.exports = User
+const FoodProviders = db.define('foodProviders', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  type: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  address: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  city: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  state: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  phone: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  location: {
+    type: Sequelize.ARRAY(Sequelize.FLOAT),
+    allowNull: false
+  }
+})
+
+const Offering = db.define('offerings', {
+  // Other optional fields size/contents
+  //--> foodProviders ID, belongs to later
+  // postingDate--getter virtual date_created of the instance of the model
+
+  expirationDate: {
+    type: Sequelize.DATEONLY,
+    allowNull: true //because some items are barely perishable like cans or rice
+  },
+  isPerishable: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
+  },
+  value: {
+    type: Sequelize.FLOAT, //$ amount for tax deductions
+    allowNull: false
+  },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  }
+})
+
+
+module.exports = Offering
