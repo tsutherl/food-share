@@ -28,7 +28,14 @@ export const postNewOfferAction = (newOffer) => {
   }
 }
 //-------------------------REDUCER-----------------------------//
-const offeringsReducer = function(state = [], action) {
+const initialState =[
+  {expirationDate: '01-01-2017', isPerishable: 'true', value: '30', description:'food'},
+  {expirationDate: '02-01-2017', isPerishable: 'true', value: '30', description:'food'},
+  {expirationDate: '03-01-2017', isPerishable: 'true', value: '30', description:'food'},
+  {expirationDate: '04-01-2017', isPerishable: 'true', value: '30', description:'food'},
+  {expirationDate: '05-01-2017', isPerishable: 'true', value: '30', description:'food'}
+  ]
+const offeringsReducer = function(state = initialState, action) {
   switch(action.type) {
   	case GET_ALL_OFFERS :
       return action.offers
