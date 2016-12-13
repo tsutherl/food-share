@@ -3,16 +3,16 @@ import axios from 'axios'
 
 //-------------------------ACTION TYPES-----------------------------//
 const GET_ALL_PROVIDERS = 'GET_ALL_PROVIDERS';
-//const POST_PROVIDER = 'POST_PROVIDER';
+const POST_PROVIDER = 'POST_PROVIDER';
 
 //-------------------------ACTION CREATORS-----------------------------//
 const fetchAllProviders = (providers) => ({ type: GET_ALL_PROVIDERS, providers });
-//const postNewProvider = (newProvider) => ({ type: POST_PROVIDER, newProvider });
+const postNewProvider = (newProvider) => ({ type: POST_PROVIDER, newProvider });
 
 //-------------------------ASYNC ACTION CREATORS (THUNK)-----------------------------//
 export const fetchAllProvidersAction = () => {
   return dispatch =>
-    fetch(`/api/offerings/`) //not specific to a food provider
+    fetch(`/api/foodProviders/`) //not specific to a food provider
       .then(res => res.json())
       .then(providers => dispatch(fetchAllProviders(providers)) )
       .catch(err => console.error(err));
@@ -20,7 +20,7 @@ export const fetchAllProvidersAction = () => {
 
 export const postNewProviderAction = (newProvider) => {
   return dispatch => {
-    axios.post('/api/offerings', newProvider)
+    axios.post('/api/foodProviders', newProvider)
     .then(function(result) {
       dispatch(postNewProvider(result.data))
     })

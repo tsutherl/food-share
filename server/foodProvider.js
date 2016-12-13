@@ -1,7 +1,8 @@
 const FoodProviders = require('APP/db/foodProviders/');
-const foodProviders = require('express').Router()
 
-foodProviders.get('/foodProviders', function(req, res, next){  //get pending items (cart items) for specific user
+const app = require('express').Router()
+
+app.get('/foodProviders', function(req, res, next){  
     FoodProviders.findAll()
         .then(foodProviders => {
           console.log("FOUND OFFER IN CALL", foodProviders)
@@ -11,6 +12,13 @@ foodProviders.get('/foodProviders', function(req, res, next){  //get pending ite
           .then(items => res.send(items))
           }
 
+      })
+      .catch(next)
+    })
+
+app.post('/foodProviders', function(req, res, next){  
+    FoodProviders.create(req.body)
+        .then(()=>res.send(201))
       })
       .catch(next)
     })
